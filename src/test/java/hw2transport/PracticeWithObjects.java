@@ -44,9 +44,7 @@ public class PracticeWithObjects {
     firstRoute.setStartPoint("Riga");
     firstRoute.setEndPoint("Ventspils");
     firstRoute.setDistance(198);
-        /*
-            distanceRouteOne - distancija marshruta 1
-        */
+    // distanceRouteOne - distancija marshruta 1
     double distanceRouteOne = firstRoute.getDistance();
 
 
@@ -55,9 +53,7 @@ public class PracticeWithObjects {
     secondRoute.setStartPoint("Tallinn");
     secondRoute.setEndPoint("Budapest");
     secondRoute.setDistance(1830);
-        /*
-            distanceRouteTwo - distancija marshruta 2
-        */
+    //distanceRouteTwo - distancija marshruta 2
     double distanceRouteTwo = secondRoute.getDistance();
 
     Routes thirdRoute = new Routes();
@@ -65,9 +61,7 @@ public class PracticeWithObjects {
     thirdRoute.setStartPoint("Moscow");
     thirdRoute.setEndPoint("Vladivostok");
     thirdRoute.setDistance(9162);
-        /*
-            distanceRouteThree - distancija marshruta 3
-        */
+    //distanceRouteThree - distancija marshruta 3
     double distanceRouteThree = thirdRoute.getDistance();
 
 
@@ -81,9 +75,9 @@ public class PracticeWithObjects {
         */
     double carLitresForRouteOne = carFC * distanceRouteOne;
     if (carTank < carLitresForRouteOne) {
-        System.out.println("ne proedet na odnom bake");
+        System.out.println("don't pass the route on one fuel tank");
     } else {
-        System.out.println("proedet");
+        System.out.println("pass the route on one fuel tank");
     }
 
 
@@ -95,9 +89,9 @@ public class PracticeWithObjects {
         */
     double carLitresForRouteTwo = carFC * distanceRouteTwo;
     if (carTank < carLitresForRouteTwo) {
-        System.out.println("ne proedet na odnom bake");
+        System.out.println("don't pass the route on one fuel tank");
     } else {
-        System.out.println("proedet");
+        System.out.println("pass the route on one fuel tank");
     }
 
 
@@ -109,9 +103,9 @@ public class PracticeWithObjects {
         */
     double carLitresForRouteThree = carFC * distanceRouteThree;
     if (carTank < carLitresForRouteThree) {
-        System.out.println("ne proedet na odnom bake");
+        System.out.println("don't pass the route on one fuel tank");
     } else {
-        System.out.println("proedet");
+        System.out.println("pass the route on one fuel tank");
     }
 
 
@@ -123,9 +117,9 @@ public class PracticeWithObjects {
         */
     double trainLitresForRouteOne = trainFC * distanceRouteOne;
     if (trainTank < trainLitresForRouteOne) {
-        System.out.println("ne proedet na odnom bake");
+        System.out.println("don't pass the route on one fuel tank");
     } else {
-        System.out.println("proedet");
+        System.out.println("pass the route on one fuel tank");
     }
 
 
@@ -137,9 +131,9 @@ public class PracticeWithObjects {
          */
     double trainLitresForRouteTwo = trainFC * distanceRouteTwo;
     if (trainTank < trainLitresForRouteTwo) {
-        System.out.println("ne proedet na odnom bake");
+        System.out.println("don't pass the route on one fuel tank");
     } else {
-        System.out.println("proedet");
+        System.out.println("pass the route on one fuel tank");
     }
 
     System.out.println("Transport2+Route3:");
@@ -150,9 +144,9 @@ public class PracticeWithObjects {
         */
     double trainLitresForRouteThree = trainFC * distanceRouteThree;
     if (trainTank < trainLitresForRouteThree) {
-        System.out.println("ne proedet na odnom bake");
+        System.out.println("don't pass the route on one fuel tank");
     } else {
-        System.out.println("proedet");
+        System.out.println("pass the route on one fuel tank");
     }
 
 
@@ -164,9 +158,9 @@ public class PracticeWithObjects {
         */
     double planeLitresForRouteOne = planeFC * distanceRouteOne;
     if (planeTank < planeLitresForRouteOne) {
-        System.out.println("ne proedet na odnom bake");
+        System.out.println("don't pass the route on one fuel tank");
     } else {
-        System.out.println("proedet");
+        System.out.println("pass the route on one fuel tank");
     }
 
     System.out.println("Transport3+Route2:");
@@ -177,9 +171,9 @@ public class PracticeWithObjects {
         */
     double planeLitresForRouteTwo = planeFC * distanceRouteTwo;
     if (planeTank < planeLitresForRouteTwo) {
-        System.out.println("ne proedet na odnom bake");
+        System.out.println("don't pass the route on one fuel tank");
     } else {
-        System.out.println("proedet");
+        System.out.println("pass the route on one fuel tank");
     }
 
     System.out.println("Transport3+Route3:");
@@ -190,9 +184,9 @@ public class PracticeWithObjects {
         */
     double planeLitresForRouteThree = planeFC * distanceRouteThree;
     if (planeTank < planeLitresForRouteThree) {
-        System.out.println("ne proedet na odnom bake");
+        System.out.println("don't pass the route on one fuel tank");
     } else {
-        System.out.println("proedet");
+        System.out.println("pass the route on one fuel tank");
         }
     }
 }
