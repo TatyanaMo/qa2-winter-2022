@@ -5,43 +5,15 @@ import org.junit.jupiter.api.Test;
 public class PracticeWithObjects {
 @Test
     public void workingWithObjects () {
+    Transport firstTransport = new Transport("Car", 10, 70);
+    Transport secondTransport = new Transport("Train", 200, 6350);
+    Transport thirdTransport = new Transport("Plane", 1700, 90770);
 
-    Transport firstTransport = new Transport();
-    firstTransport.setVehicleType("Car");
-    firstTransport.setFuelConsumption(10);
-    firstTransport.setTankVolume(70);
+    Routes firstRoute = new Routes("Route1", "Riga", "Ventspils", 198);
+    Routes secondRoute = new Routes("Route2", "Tallinn", "Budapest", 1830);
+    Routes thirdRoute = new Routes("Route3", "Moscow", "Vladivostok", 9162);
 
-    Transport secondTransport = new Transport();
-    secondTransport.setVehicleType("Train");
-    secondTransport.setFuelConsumption(200);
-    secondTransport.setTankVolume(6350);
-
-    Transport thirdTransport = new Transport();
-    thirdTransport.setVehicleType("Plane");
-    thirdTransport.setFuelConsumption(1700);
-    thirdTransport.setTankVolume(90770);
-
-
-    Routes firstRoute = new Routes();
-    firstRoute.setRouteName("Route1");
-    firstRoute.setStartPoint("Riga");
-    firstRoute.setEndPoint("Ventspils");
-    firstRoute.setDistance(198);
-
-    Routes secondRoute = new Routes();
-    secondRoute.setRouteName("Route2");
-    secondRoute.setStartPoint("Tallinn");
-    secondRoute.setEndPoint("Budapest");
-    secondRoute.setDistance(1830);
-
-    Routes thirdRoute = new Routes();
-    thirdRoute.setRouteName("Route3");
-    thirdRoute.setStartPoint("Moscow");
-    thirdRoute.setEndPoint("Vladivostok");
-    thirdRoute.setDistance(9162);
-
-
-    //-------------------VIVOD V KONSOLJ-----------------
+//----------------------VIVOD V KONSOLJ--------------------
 
     System.out.println("Transport1+Route1:");
     System.out.println(firstTransport.getVehicleType());
