@@ -17,7 +17,6 @@ public class FindLocationTest {
 //vinesla testovie dannie (peremennie) na urovenj classa, za ramki testa)
     private final String HOME_PAGE_URL = "http://www.discovercars.com/";
     private final String LOCATION_TO_OPEN = "Latvia";
-    private final String CAR_RENTAL_IN_LATVIA_TEXT = "Car Rental in Latvia";
 
     private final By ACCEPT_COOKIES_BTN = By.id("onetrust-accept-btn-handler");
     private final By TOP_LOCATIONS = By.xpath(".//div[@class = 'tl-box']/a");
@@ -50,11 +49,10 @@ public class FindLocationTest {
                 break;
             }
         }
- //Assertion - proverka testa. Proverjaem flag (true ili false - esli false, to "location not found")
-        Assertions.assertTrue(flag, "location not found");
+         Assertions.assertTrue(flag, "location not found");  //Assertion - proverka testa. Proverjaem flag (true ili false - esli false, to "location not found")
 
-        browser.findElement(CAR_RENTAL_IN_LATVIA).getText().equals(CAR_RENTAL_IN_LATVIA_TEXT);
-        System.out.println(CAR_RENTAL_IN_LATVIA_TEXT);
-
+        browser.get("http://www.discovercars.com/latvia");
+        String title = browser.findElement(CAR_RENTAL_IN_LATVIA).getText();
+        System.out.println(title);
     }
 }
