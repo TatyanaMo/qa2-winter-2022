@@ -40,16 +40,12 @@ public class FindLocationTest {
     @Test
     public void findLocationLatvia() {
         List<WebElement> locations = browser.findElements(TOP_LOCATIONS);
-//ispoljzuju flag, chtobi ponjatj, nashel li on nuzhnuju location (Latvia).false - ne nashel, true- nashel/ BEZ flaga, pishet "Test pased"? no element ne nahodit
-        boolean flag = false;
         for (WebElement locationName : locations) {
             if (locationName.getText().equals(LOCATION_TO_OPEN)) {
-                flag = true;
                 locationName.click();
                 break;
             }
         }
-         Assertions.assertTrue(flag, "location not found");  //Assertion - proverka testa. Proverjaem flag (true ili false - esli false, to "location not found")
 
         browser.get("http://www.discovercars.com/latvia");
         String title = browser.findElement(CAR_RENTAL_IN_LATVIA).getText();
