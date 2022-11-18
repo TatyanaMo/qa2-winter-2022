@@ -24,8 +24,9 @@ public class FindLocationTest {
     private WebDriver browser;
 
 //BeforeEach - to chto budet povtorjatsja pered kazhdim testom (open browser->open website->maximize window->accept cookies)
+
     @BeforeEach
-    public void before () {
+    public void openHomePageCheck () {
         System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
         browser = new ChromeDriver();
         browser.manage().window().maximize();
@@ -38,7 +39,7 @@ public class FindLocationTest {
     }
 
     @Test
-    public void findLocationLatvia() {
+    public void findLocation() {
         List<WebElement> locations = browser.findElements(TOP_LOCATIONS);
         for (WebElement locationName : locations) {
             if (locationName.getText().equals(LOCATION_TO_OPEN)) {
@@ -47,7 +48,6 @@ public class FindLocationTest {
             }
         }
 
-        browser.get("http://www.discovercars.com/latvia");
         String title = browser.findElement(CAR_RENTAL_IN_LATVIA).getText();
         System.out.println(title);
     }
