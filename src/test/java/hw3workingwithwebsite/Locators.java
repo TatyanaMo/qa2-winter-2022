@@ -32,7 +32,8 @@ public class Locators {
     private final By AIR_SPECIFICATION_MIN_PRICE = By.xpath(".//span[@class = 'min-price']");
     // .//span[contains(text(), '€ 103.2')] - po tekstu
 
-    private final By CAR_SPECIFICATION_FUEL_TYPE = By.xpath(".//label[@for= 'fuel-type-ft-V']");
+    private final By CAR_SPECIFICATION_FUEL_TYPE = By.xpath(".//label [@data-event-label = 'Gasoline']");
+    // .//label[contains(@class, 'my-checkbox-label default filtering-event')]
     private final By NUMBER_OF_SEATS = By.xpath(".//label[@for= 'number-of-seats-seats-4']");
     private final By PREPAYMENT_TYPE = By.xpath(".//span[@class = 'dc-ui badge badge-medium badge-blue']");
     // .//span[@aria-describedby = 'qtip-10']" - togda nahodit toljko 1 element
