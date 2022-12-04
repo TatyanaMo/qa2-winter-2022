@@ -19,7 +19,7 @@ public class ReservationTests {
     private WebDriver browser;
     private WebDriverWait wait;
 
-    //private final String HOME_PAGE_URL = "http://www.qaguru.lv:8089/tickets/";
+    private final String HOME_PAGE_URL = "http://www.qaguru.lv:8089/tickets/";
 
     private final By FROM = By.id("afrom");
     private final By TO = By.id("bfrom");
@@ -51,18 +51,14 @@ public class ReservationTests {
         System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
         browser = new ChromeDriver();
         browser.manage().window().maximize();
-        browser.get("http://www.qaguru.lv:8089/tickets/");
-
+        browser.get(HOME_PAGE_URL);
         wait = new WebDriverWait(browser, Duration.ofSeconds(10));
-
 
         select(FROM, "MEL");
         String selectedOptionFrom = new Select(browser.findElement(FROM)).getFirstSelectedOption().getText();
-        //System.out.println(selectedOptionFrom);
 
         select(TO, "CPT");
         String selectedOptionTo = new Select(browser.findElement(TO)).getFirstSelectedOption().getText();
-       // System.out.println(selectedOptionTo);
         browser.findElement(GO_BTN).click();
 
         List<WebElement> destinations = browser.findElements(DESTINATIONS);
@@ -73,7 +69,6 @@ public class ReservationTests {
 
         type(NAME, "Barsjusha");
         String passengerName = browser.findElement(NAME).getAttribute("value");
-        //System.out.println(passengerName);     //dlja proverki
         type(SURNAME, "Kotovski");
         type(DISCOUNT, "fg123gg");
         type(ADULTS, "1");
@@ -84,7 +79,6 @@ public class ReservationTests {
 
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(FLIGHT_INFO));
         List <WebElement> flightInfo = browser.findElements(FLIGHT_INFO);
-        //System.out.println("elementov v spiske" + flightInfo.size());   //dlja proverki
         String name = flightInfo.get(0).getText();
         String from2 = flightInfo.get(1).getText();
         String to2 = flightInfo.get(2).getText();
@@ -108,7 +102,6 @@ public class ReservationTests {
         List<WebElement> bookSeats = browser.findElements(SEATS);
         bookSeats.get(6);
         String seat = bookSeats.get(6).getText();
-        //System.out.println("vibrannoe mesto: " + seat);   //dlja proverki
         bookSeats.get(6).click();
 
         wait.until(ExpectedConditions.presenceOfElementLocated(BOOKED_SEAT));
@@ -128,14 +121,12 @@ public class ReservationTests {
         wait.until(ExpectedConditions.presenceOfElementLocated(CONFIRMATION_TEXT));
         String text = browser.findElement(CONFIRMATION_TEXT).getText();
         System.out.println(text);
-
     }
 
     private void select (By locator, String value) {
         WebElement airportSelect = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         Select selectRoute = new Select(airportSelect);
         selectRoute.selectByValue(value);
-
     }
 
     private void type (By locator, String text) {
