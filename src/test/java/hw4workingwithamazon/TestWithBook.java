@@ -77,10 +77,27 @@ public class TestWithBook {
         books.get(3).findElement(BOOK_TO_OPEN_COMMENT_LINK).click();
 
         String bookStars = browser.findElement(STARS).getText();
-        System.out.println("book stars are equal: " + stars.contains(bookStars));   // sravnivaet tekst po chastichnomu sovpadeniju
+
+        //proverka zvezd
+        boolean isBookStarsAreEqual = false;
+        for (WebElement book : books) {
+            if (stars.contains(bookStars)) {
+                isBookStarsAreEqual = true;
+                break;
+            }
+        }
+        Assertions.assertTrue(isBookStarsAreEqual, "Book stars not equal!");
 
         String bookRating = browser.findElement(RATING_TWO).getText();
-        System.out.println("book rating is equal: " + bookRating.contains(rating)); // sravnivaet tekst po chastichnomu sovpadeniju
+        //proverka ratinga
+        boolean isBookRatingisEqual = false;
+        for (WebElement book : books) {
+            if (bookRating.contains(rating)) {
+                isBookRatingisEqual = true;
+                break;
+            }
+        }
+        Assertions.assertTrue(isBookRatingisEqual, "Book rating not equal!");
 
         String bookReview = browser.findElement(BOOK_REVIEW).getText();
         System.out.println(bookReview);
@@ -92,26 +109,21 @@ public class TestWithBook {
         } catch (NoSuchElementException e) {
             System.out.println(reviews.size());
         }
+
         while (browser.findElement(NEXT_PAGE_BTN).isEnabled()) {
             wait = new WebDriverWait(browser, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(idFirstReview)));
             List<WebElement> reviewNextPage = new ArrayList<>(browser.findElements(REVIEW_LIST));
-            for (WebElement reviewNextPageId: reviewNextPage) {
-                System.out.println(reviewNextPageId.getAttribute("id")); // v konsole vidno chto id ne menjajutsja na stranicah, a dolzhni menjatsja
-            }
-            //List<WebElement> reviewNextPage = browser.findElements(REVIEW_LIST);
             String nextPageIdFirstReview = reviewNextPage.get(0).getAttribute("id");
-            if (idFirstReview.equals(nextPageIdFirstReview)) {
-                wait = new WebDriverWait(browser, Duration.ofSeconds(10));
-                System.out.println("if " + reviews.size());
-            } else {
+            Assertions.assertEquals(idFirstReview, nextPageIdFirstReview, "ID different!");
                 reviews.addAll(reviewNextPage);
                 System.out.println("else " + reviews.size());
-            }
+
             browser.findElement(NEXT_PAGE_BTN).click();
         }
     }
-    /*@AfterEach
+    @AfterEach
     public void closeBrowser() {
         browser.close();
-    }*/
+    }
    }
