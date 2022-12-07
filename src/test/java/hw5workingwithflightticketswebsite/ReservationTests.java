@@ -48,27 +48,28 @@ public class ReservationTests {
 
     @Test
     public void registrationCheck () {
+        String firstName = "Barsjusha";
+        String airportFrom = "MEL";
+        String airportTo = "CPT";
+
         System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
         browser = new ChromeDriver();
         browser.manage().window().maximize();
         browser.get(HOME_PAGE_URL);
         wait = new WebDriverWait(browser, Duration.ofSeconds(10));
 
-        select(FROM, "MEL");
-        String selectedOptionFrom = new Select(browser.findElement(FROM)).getFirstSelectedOption().getText();
+        select(FROM, airportFrom);
 
-        select(TO, "CPT");
-        String selectedOptionTo = new Select(browser.findElement(TO)).getFirstSelectedOption().getText();
+        select(TO, airportTo);
         browser.findElement(GO_BTN).click();
 
         List<WebElement> destinations = browser.findElements(DESTINATIONS);
         String from = destinations.get(0).getText();
         String to = destinations.get(1).getText();
-        Assertions.assertEquals(from, selectedOptionFrom, "Airports FROM not equals!");
-        Assertions.assertEquals(to, selectedOptionTo, "Airports TO not equals!");
+        Assertions.assertEquals(airportFrom, from, "Airports FROM not equals!");
+        Assertions.assertEquals(airportTo, to, "Airports TO not equals!");
 
-        type(NAME, "Barsjusha");
-        String passengerName = browser.findElement(NAME).getAttribute("value");
+        type(NAME, firstName);
         type(SURNAME, "Kotovski");
         type(DISCOUNT, "fg123gg");
         type(ADULTS, "1");
@@ -86,20 +87,32 @@ public class ReservationTests {
         //proverki:
         boolean isNameEqual = false;
         for (WebElement info : flightInfo) {
-            if (name.contains(passengerName)) {
+            if (name.contains(firstName)) {
                 isNameEqual = true;
                 break;
             }
         }
         Assertions.assertTrue(isNameEqual,"Name not equal!" );
+
         Assertions.assertEquals(from2, from, "Airports FROM not equal!" );
         Assertions.assertEquals(to2, to, "Airports TO not equal!");
-        String price = browser.findElement(RESPONSE_TEXT).getText();
-        System.out.println(price); // kak to mozhno chastj teksta vivesti toljko ??
+
+        String responseText = browser.findElement(RESPONSE_TEXT).getText();
+        String[] splitText = responseText.split(" ");
+        boolean isPriceAvailable = false;
+        for ( String element : splitText) {
+            if (element.equals(splitText[10])) {
+            } else if (element.equals(splitText[11])) {
+                isPriceAvailable = true;
+                break;
+            }
+        }
+        Assertions.assertTrue(isPriceAvailable, "No flight price!");
 
         browser.findElement(BOOK_BTN).click();
 
-        List<WebElement> bookSeats = browser.findElements(SEATS);
+        wait.until(ExpectedConditions.presenceOfElementLocated(SEATS));
+        List<WebElement> bookSeats = browser.findElements(SEATS);   //kak vinesti v otdeljnij metod vibor mesta? ( za predeli testa)
         bookSeats.get(6);
         String seat = bookSeats.get(6).getText();
         bookSeats.get(6).click();
@@ -134,4 +147,5 @@ public class ReservationTests {
         inputField.clear();
         inputField.sendKeys(text);
     }
+
 }
