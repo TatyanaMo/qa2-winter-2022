@@ -53,7 +53,6 @@ public class TicketsTests {
         WebElement we = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         Select select = new Select(we);
         select.selectByValue(value);
-
     }
 
     private void type(By locator, String text) {
