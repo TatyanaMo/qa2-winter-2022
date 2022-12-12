@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BaseFunc {
     private WebDriver browser;
@@ -24,7 +25,7 @@ public class BaseFunc {
     }
 
     public void openUrl (String url) {
-        if (!url.startsWith("http://") && !url.startsWith("https://")) {            // || - eto ili  && - eto i
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
             url = "http://" + url;
         }
 
@@ -39,5 +40,17 @@ public class BaseFunc {
         WebElement we = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         Select select = new Select(we);
         select.selectByValue(value);
+    }
+
+    public void type(By locator, String text) {
+        WebElement input = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        input.clear();
+        input.sendKeys(text);
+    }
+
+    public List<WebElement> list(By locator) {
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+        List<WebElement> webElements = browser.findElements(locator);
+        return webElements;
     }
 }

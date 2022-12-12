@@ -9,7 +9,6 @@ public class HomePage {
     private final By GO_BTN = By.xpath(".//span[@class = 'gogogo']");
 
     private BaseFunc baseFunc;
-
     public HomePage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
     }
