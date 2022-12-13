@@ -1,12 +1,16 @@
 package hw5workingwithflightticketswebsite;
 
 import dev.failsafe.internal.util.Assert;
+import org.apache.commons.lang3.Range;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -51,6 +55,7 @@ public class ReservationTests {
         String firstName = "Barsjusha";
         String airportFrom = "MEL";
         String airportTo = "CPT";
+        //Integer seatNr = 6;
 
         System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
         browser = new ChromeDriver();
@@ -81,31 +86,21 @@ public class ReservationTests {
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(FLIGHT_INFO));
         List <WebElement> flightInfo = browser.findElements(FLIGHT_INFO);
         String name = flightInfo.get(0).getText();
+        String name1 = StringUtils.substring(name, 0, name.length()-1);
         String from2 = flightInfo.get(1).getText();
         String to2 = flightInfo.get(2).getText();
 
         //proverki:
-        boolean isNameEqual = false;
-        for (WebElement info : flightInfo) {
-            if (name.contains(firstName)) {
-                isNameEqual = true;
-                break;
-            }
-        }
-        Assertions.assertTrue(isNameEqual,"Name not equal!" );
-
+        Assertions.assertEquals(name1,firstName, "Name not equal!" );
         Assertions.assertEquals(from2, from, "Airports FROM not equal!" );
         Assertions.assertEquals(to2, to, "Airports TO not equal!");
 
         String responseText = browser.findElement(RESPONSE_TEXT).getText();
-        String[] splitText = responseText.split(" ");
+        String price = StringUtils.substringBetween(responseText, "for", "EUR");
+
         boolean isPriceAvailable = false;
-        for ( String element : splitText) {
-            if (element.equals(splitText[10])) {
-            } else if (element.equals(splitText[11])) {
+            if (responseText.contains(price)) {
                 isPriceAvailable = true;
-                break;
-            }
         }
         Assertions.assertTrue(isPriceAvailable, "No flight price!");
 
@@ -124,7 +119,6 @@ public class ReservationTests {
         for (WebElement passengerSeat : bookSeats) {
             if (bookedSeat.contains(seat)) {
                 isSeatsEqual = true;
-                break;
             }
         }
         Assertions.assertTrue(isSeatsEqual, "Seats not equal!");
@@ -132,8 +126,12 @@ public class ReservationTests {
         browser.findElement(BOOK_BTN_2).click();
 
         wait.until(ExpectedConditions.presenceOfElementLocated(CONFIRMATION_TEXT));
-        String text = browser.findElement(CONFIRMATION_TEXT).getText();
-        System.out.println(text);
+        List<WebElement>text = browser.findElements(CONFIRMATION_TEXT);
+        boolean isReservationSucceed = false;
+        if (!text.isEmpty()) {
+            isReservationSucceed = true;
+        }
+        Assertions.assertTrue(isReservationSucceed,"reservation failed!");
     }
 
     private void select (By locator, String value) {
@@ -148,4 +146,8 @@ public class ReservationTests {
         inputField.sendKeys(text);
     }
 
+        /*@AfterEach
+    public void closeBrowser() {
+        browser.close();
+    }*/
 }
