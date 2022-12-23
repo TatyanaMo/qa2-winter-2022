@@ -48,7 +48,12 @@ public class FindLocationTest {
             }
         }
 
-        String title = browser.findElement(CAR_RENTAL_IN_LATVIA).getText();
-        System.out.println(title);
+        List <WebElement> title = browser.findElements(CAR_RENTAL_IN_LATVIA);
+        boolean isCountrySelect = false;
+        if (!title.isEmpty()) {
+            isCountrySelect = true;
+        }
+        Assertions.assertTrue(isCountrySelect, "Country not Selected!");
+
     }
 }
