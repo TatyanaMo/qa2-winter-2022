@@ -31,7 +31,6 @@ public class SelectedBookAmazonPage {
         Integer review1 = baseFunc.list(REVIEW_LIST).size();
         //baseFunc.list(REVIEW_LIST).get(0).getAttribute("id");
             while (baseFunc.findElement(NEXT_PAGE_BTN).isEnabled()) {
-                //baseFunc.findElement(NEXT_PAGE_BTN).click();
                 baseFunc.waitAllElementPresented(REVIEW_LIST);
                 Integer reviewNextPage = baseFunc.list(REVIEW_LIST).size();
                 baseFunc.findElement(NEXT_PAGE_BTN).click();
