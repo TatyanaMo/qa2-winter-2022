@@ -5,16 +5,17 @@ import pageobject.BaseFunc;
 
 public class RegistrationConfirmationPage {
 
+    private final String TEXT = "Thank You for flying with us!";
+    private final By CONFIRMATION_TEXT = By.xpath(".//div[@class = 'finalTxt']");
     private BaseFunc baseFunc;
+
     public RegistrationConfirmationPage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
     }
 
-    private final By CONFIRMATION_TEXT = By.xpath(".//div[@class = 'finalTxt']");
-
-    public String getConfirmationText() {
-        baseFunc.waifElementPresented(CONFIRMATION_TEXT);
-        return baseFunc.list(CONFIRMATION_TEXT).toString();
+    public boolean isSuccessfulRegistrationTextAppears() {
+        String textOnPage = baseFunc.findElement(CONFIRMATION_TEXT).getText();
+        return textOnPage.equals(TEXT);
     }
 
 }

@@ -1,15 +1,17 @@
 package pageobject.pages;
 
 import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pageobject.BaseFunc;
+
+import java.util.List;
 
 public class SeatSelectionPage {
 
     private final By SEATS = By.xpath(".//div[@class = 'seat']");
     private final By BOOKED_SEAT = By.xpath(".//div[@class='line']");
-    //private Integer seatNr = 6;
     private final By BOOK_BTN_2 = By.id("book3");
 
 
@@ -18,15 +20,28 @@ public class SeatSelectionPage {
     this.baseFunc = baseFunc;
     }
 
-    public WebElement getSeat(int seatNr) {
-        baseFunc.waitForElementsCountAtLeast(SEATS, 15);
-        return baseFunc.list(SEATS).get(seatNr-1);
+    public void selectSeat(int seatNr) {
+        baseFunc.waitForElementsCountAtLeast(SEATS, 30);
+        List<WebElement> seats = baseFunc.list(SEATS);
+
+        boolean isSeatFound = false;
+            for (WebElement we : seats) {
+                if (Integer.parseInt(we.getText()) == seatNr) {
+                    baseFunc.click(we);
+                    isSeatFound = true;
+                    break;
+                }
+            }
+
+        Assertions.assertTrue(isSeatFound, "Seat Nr. " + seatNr + " isn't found!");
     }
-    public String getSelectedSeat() {
-        String selectedSeatText = baseFunc.findElement(BOOKED_SEAT).getText();
-        return StringUtils.right(selectedSeatText,1);
+
+    public int getSelectedSeatNr() {
+     String selectedSeatInfo = baseFunc.findElement(BOOKED_SEAT).getText();
+     return Integer.parseInt(StringUtils.getDigits(selectedSeatInfo));
     }
-    public void click () {
+
+    public void book () {
         baseFunc.click(BOOK_BTN_2);
     }
 }

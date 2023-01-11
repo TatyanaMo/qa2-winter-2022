@@ -36,6 +36,10 @@ public class BaseFunc {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
+    public void click (WebElement we) {
+        wait.until(ExpectedConditions.elementToBeClickable(we)).click();
+    }
+
     public void select(By locator, String value) {
         WebElement we = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         Select select = new Select(we);
@@ -77,5 +81,7 @@ public class BaseFunc {
     public void waifElementPresented (By locator) {
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
-
+    public void waitAllElementPresented (By locator) {
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+    }
 }

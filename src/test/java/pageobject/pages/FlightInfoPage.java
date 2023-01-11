@@ -35,7 +35,7 @@ public class FlightInfoPage {
         return StringUtils.substringBetween(text,"for ", " EUR");
     }
 
-    public void click() {
+    public void book() {
         baseFunc.click(BOOK_BTN);
     }
 }
