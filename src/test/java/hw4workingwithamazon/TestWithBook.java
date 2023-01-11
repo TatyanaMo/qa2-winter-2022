@@ -25,7 +25,7 @@ public class TestWithBook {
     private final By CONTINUE_BTN = By.xpath(".//input[@data-action-type = 'DISMISS']");
     private final By NAVIGATION_SHOP_MENU = By.xpath(".//div[@class = 'nav-progressive-content']/a");
     private final By BEST_SELLERS_CATEGORIES = By.xpath(".//div [@class = '_p13n-zg-nav-tree-all_style_zg-browse-item__1rdKf _p13n-zg-nav-tree-all_style_zg-browse-height-small__nleKL']/a");
-    private final By LIST_OF_BOOKS = By.xpath(".//div[@class =  'a-cardui _cDEzb_grid-cell_1uMOS p13n-grid-content']");
+    private final By LIST_OF_BOOKS = By.xpath(".//div[@class = 'a-cardui _cDEzb_grid-cell_1uMOS expandableGrid p13n-grid-content']");
     private final By BOOK_TO_OPEN_COMMENT_LINK = By.xpath(".//div[@class = 'a-icon-row']/a");
     private final By RATING_ONE = By.xpath(".//span[@class = 'a-size-small']");
 
@@ -110,14 +110,23 @@ public class TestWithBook {
             System.out.println(reviews.size());
         }
 
+//Sdelatj praviljnij podschet kommentariev!!
         while (browser.findElement(NEXT_PAGE_BTN).isEnabled()) {
             wait = new WebDriverWait(browser, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(idFirstReview)));
             List<WebElement> reviewNextPage = new ArrayList<>(browser.findElements(REVIEW_LIST));
             String nextPageIdFirstReview = reviewNextPage.get(0).getAttribute("id");
+            /*for (WebElement reviewNextPageId: reviewNextPage) {
+                System.out.println(reviewNextPageId.getAttribute("id"));
+            }*/
             Assertions.assertEquals(idFirstReview, nextPageIdFirstReview, "ID different!");
-                reviews.addAll(reviewNextPage);
-                System.out.println("else " + reviews.size());
+            /*if (idFirstReview.equals(nextPageIdFirstReview)) {
+                //wait = new WebDriverWait(browser, Duration.ofSeconds(10));
+                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(idFirstReview)));
+                System.out.println("if " + reviews.size());
+            } else {}*/
+            reviews.addAll(reviewNextPage);
+            System.out.println("else " + reviews.size());
 
             browser.findElement(NEXT_PAGE_BTN).click();
         }
