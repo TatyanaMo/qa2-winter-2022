@@ -29,6 +29,7 @@ public class FindLocationTest {
     public final String expectedPickUpDate = "16-05-2023";
     public final String expectedDropOffDate = "11-06-2023";
     public final String pickUpTime = "12:00";
+    public final String dropOffTime = "14:30";
 
     private final int pickUpDay = 25;
     private final String pickUpMonth = "November";
@@ -50,11 +51,15 @@ public class FindLocationTest {
     private final By CALENDAR_SELECT_DAY = By.xpath(".//td[@data-handler='selectDay']/a");
 
     private final By PICK_UP_TIME = By.id("pick_time_chosen");
-    private final By PU_TIME_SELECT = By.xpath(".//div[@id='pick_time_chosen']//li[@class='active-result']");
+    private final By TIME_SELECT = By.xpath(".//ul[@class = 'chosen-results']");
+    private final By TIMES = By.xpath(".//li[@class = 'active-result']");
+
+    private final By DROP_TIME = By.id("drop_time_chosen");
+
 
 
     private WebDriver browser;
-
+    //WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(10));
 
     @BeforeEach
     public void openHomePageCheck () {
@@ -90,7 +95,6 @@ public class FindLocationTest {
 
     @Test
     public void calendarTest () {
-
         WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(PICK_UP_DATE));
         browser.findElement(PICK_UP_DATE).click();
@@ -101,8 +105,10 @@ public class FindLocationTest {
         selectDropOffDate(expectedDropOffDate);
 
         wait.until(ExpectedConditions.presenceOfElementLocated(PICK_UP_TIME)).click();
-        getPickUpTime(PU_TIME_SELECT, pickUpTime);
+        getPickUpTime(TIME_SELECT, TIMES, pickUpTime);
 
+        wait.until(ExpectedConditions.presenceOfElementLocated(DROP_TIME)).click();
+        getDropOffTime(TIME_SELECT, TIMES, dropOffTime);
 
         }
 
@@ -113,7 +119,6 @@ public class FindLocationTest {
             int expectedDay = expectedLocalDate.getDayOfMonth();
             int expectedMonth = expectedLocalDate.getMonthValue();
             int expectedYear = expectedLocalDate.getYear();
-
 
             String actualPickUpMonthText = browser.findElements(CALENDAR_MONTH).get(0).getText();
             int actualPickUpMonth = DateTimeFormatter.ofPattern("MMMM").withLocale(Locale.ENGLISH).parse(actualPickUpMonthText).get(ChronoField.MONTH_OF_YEAR);
@@ -166,23 +171,37 @@ public class FindLocationTest {
                     System.out.println("Invalid date!" + ":" + expectedDay + expectedMonth);
                 }
         }
-        public void getPickUpTime(By locator, String pickUpTime) {
-        /*
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-            LocalTime localPickUpTime = LocalTime.parse(pickUpTime, dtf);
-            int hour = localPickUpTime.getHour();
-            int minutes = localPickUpTime.getMinute();
-            */
-
+        public void getPickUpTime(By locator, By locator2, String pickUpTime) {
             List <WebElement> timesToSelect = browser.findElements(locator);
+            WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.elementToBeClickable(locator2));
+            List<WebElement> puTimes = timesToSelect.get(0).findElements(locator2);
             boolean isTimeSelected = false;
-            for (WebElement time : timesToSelect) {
-                if (time.equals(pickUpTime)) {
+            for (WebElement time : puTimes) {
+                if (time.getText().equals(pickUpTime)) {
                     time.click();
                     isTimeSelected = true;
                     break;
                 }
             }
+            Assertions.assertTrue(isTimeSelected,"Time not selected!");
+        }
+
+        public void getDropOffTime(By locator, By locator2, String dropOffTime) {
+            List <WebElement> timesToSelect = browser.findElements(locator);
+            WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.elementToBeClickable(locator2));
+            List<WebElement> puTimes = timesToSelect.get(1).findElements(locator2);
+            boolean isTimeSelected = false;
+            for (WebElement time : puTimes) {
+                if (time.getText().equals(dropOffTime)) {
+                    time.click();
+                    isTimeSelected = true;
+                    break;
+                }
+            }
+            Assertions.assertTrue(isTimeSelected,"Time not selected!");
+
         }
 
 
