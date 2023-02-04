@@ -17,7 +17,7 @@ public class WeatherResponse {
     private List<Minute> minutely;  // eto vlozhennij celij spisok
     private List<Hour> hours;
     private List<Day> days;
-    private List<Alerts> alerts;
+    private List<Alert> alerts;
 
 //Getters/Setters
     public double getLat() {
@@ -84,11 +84,11 @@ public class WeatherResponse {
         this.days = days;
     }
 
-    public List<Alerts> getAlerts() {
+    public List<Alert> getAlerts() {
         return alerts;
     }
 
-    public void setAlerts(List<Alerts> alerts) {
+    public void setAlerts(List<Alert> alerts) {
         this.alerts = alerts;
     }
 }
