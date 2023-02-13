@@ -52,7 +52,6 @@ Feature: Weather forecast
       | wind_deg    | 313        |
       | wind_gust   | 10.7       |
       | pop         | 0.03       |
-# etot POP - tut dolzhen bitj ?
 
     And hourly weather information is:
       | id          | 803           |
@@ -108,6 +107,7 @@ Feature: Weather forecast
     And tags for an alert Nr. 1 are:
       | Sunny  |
       | Clouds |
+
 
 #     Sunny i Clouds - eto naprimer Tags esli bi bili - tak kak eto prosto spisok znachenij, bez kljuchej, to s Boljshoj bukvi
 #    Then latitude is 39.31
