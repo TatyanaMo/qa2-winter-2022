@@ -31,7 +31,7 @@ public class FlightInfoPage {
     }
 
     public String getPrice () {
-        String text = baseFunc.findElement(RESPONSE_TEXT).getText();
+        String text = baseFunc.getTextOfElement(RESPONSE_TEXT);
         return StringUtils.substringBetween(text,"for ", " EUR");
     }
 

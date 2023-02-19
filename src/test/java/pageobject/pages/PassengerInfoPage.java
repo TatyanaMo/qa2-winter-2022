@@ -1,11 +1,10 @@
 package pageobject.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import pageobject.BaseFunc;
-import pageobject.model.Passenger;
+import pageobject.model.FlightInfo;
 
-import java.util.List;
+
 
 public class PassengerInfoPage {
     private final By FIRST_NAME = By.id("name");
@@ -32,15 +31,18 @@ public class PassengerInfoPage {
     public String getToAirport() {
         return baseFunc.list(DESTINATIONS).get(1).getText();
     }
-    public void fillInPassengerInfo(Passenger passenger) {
-        baseFunc.type(FIRST_NAME, passenger.getFirstName());
-        baseFunc.type(LAST_NAME, passenger.getLastName());
-        baseFunc.type(DISCOUNT, passenger.getDiscount());
-        baseFunc.type(ADULTS, passenger.getPeopleCount());
-        baseFunc.type(CHILDREN, passenger.getChildCount());
-        baseFunc.type(BAG, passenger.getBagCount());
-        baseFunc.selectByText(FLIGHT, passenger.getDate());
+    public void fillInPassengerInfo(FlightInfo flightInfo) {
+        baseFunc.type(FIRST_NAME, flightInfo.getPassenger().getFirstName());
+        baseFunc.type(LAST_NAME, flightInfo.getPassenger().getLastName());
+        baseFunc.type(DISCOUNT, flightInfo.getDiscount());
+        baseFunc.type(ADULTS, flightInfo.getAdultsCount());
+        baseFunc.type(CHILDREN, flightInfo.getChildCount());
+        baseFunc.type(BAG, flightInfo.getBagsCount());
+        baseFunc.selectByText(FLIGHT, flightInfo.getFlightDate());
 
+        //baseFunc.click(GET_PRICE_BTN);
+    }
+    public void getPrice(){
         baseFunc.click(GET_PRICE_BTN);
     }
 }
