@@ -2,10 +2,7 @@ package pageobject;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import pageobject.pagesForAmazon.BestSellersAmazonPage;
-import pageobject.pagesForAmazon.BooksAmazonPage;
-import pageobject.pagesForAmazon.HomePageAmazon;
-import pageobject.pagesForAmazon.SelectedBookAmazonPage;
+import pageobject.pagesForAmazon.*;
 
 public class AmazonTests {
     private final String HOME_PAGE_URL = "http://www.amazon.de/";
@@ -43,5 +40,24 @@ public class AmazonTests {
 
         System.out.println(selectedBookAmazonPage.getReviews());
 
+    }
+
+    @Test
+    public void countingWordsInText () {
+        baseFunc.openUrl(HOME_PAGE_URL);
+
+        HomePageAmazon homePageAmazon = new HomePageAmazon(baseFunc);
+        homePageAmazon.acceptCookiesAndMessages();
+        homePageAmazon.openNavigationShopMenuItem(navigationShopMenuItem);
+
+        BestSellersAmazonPage bestSellersAmazonPage = new BestSellersAmazonPage(baseFunc);
+        bestSellersAmazonPage.openBestSellersCategory(bestSellersCategory);
+
+        BooksAmazonPage booksAmazonPage = new BooksAmazonPage(baseFunc);
+        booksAmazonPage.openBook1();
+
+        BookForHashMapAmazon bookForHashMapAmazon = new BookForHashMapAmazon(baseFunc);
+        bookForHashMapAmazon.getWordsOfText().size();
+        System.out.println(bookForHashMapAmazon.getWordsOfText().size());
     }
 }

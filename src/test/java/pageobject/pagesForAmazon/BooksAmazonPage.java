@@ -10,6 +10,8 @@ public class BooksAmazonPage {
     private final By BOOK_TO_OPEN_COMMENT_LINK = By.xpath(".//div[@class = 'a-icon-row']/a");
     private final By RATING_ONE = By.xpath(".//span[@class = 'a-size-small']");
 
+    private final By BOOK = By.id("3328602925");
+
     private BaseFunc baseFunc;
     public BooksAmazonPage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
@@ -31,5 +33,10 @@ public class BooksAmazonPage {
 
     public void openBook (int bookNr) {
         getBook(bookNr).findElement(BOOK_TO_OPEN_COMMENT_LINK).click();
+    }
+
+    //esli nado otkritj knigu dlja hashmapa
+    public void openBook1 () {
+        baseFunc.findElement(BOOK).click();
     }
 }

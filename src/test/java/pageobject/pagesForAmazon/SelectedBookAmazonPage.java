@@ -19,11 +19,11 @@ public class SelectedBookAmazonPage {
     }
 
     public String getSecondBookStars () {
-        return baseFunc.findElement(STARS).getText();
+        return baseFunc.getTextOfElement(STARS);
     }
 
     public String getSecondBookRating () {
-        return baseFunc.findElement(RATING_TWO).getText().replaceAll(" global ratings", "");
+        return baseFunc.getTextOfElement(RATING_TWO).replaceAll(" global ratings", "");
     }
 
     public int getReviews() {
@@ -38,4 +38,5 @@ public class SelectedBookAmazonPage {
             }
         return review1;
     }
+
 }

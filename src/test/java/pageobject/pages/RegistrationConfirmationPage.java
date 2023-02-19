@@ -14,7 +14,7 @@ public class RegistrationConfirmationPage {
     }
 
     public boolean isSuccessfulRegistrationTextAppears() {
-        String textOnPage = baseFunc.findElement(CONFIRMATION_TEXT).getText();
+        String textOnPage = baseFunc.getTextOfElement(CONFIRMATION_TEXT);
         return textOnPage.equals(TEXT);
     }
 

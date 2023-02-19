@@ -37,7 +37,7 @@ public class SeatSelectionPage {
     }
 
     public int getSelectedSeatNr() {
-     String selectedSeatInfo = baseFunc.findElement(BOOKED_SEAT).getText();
+     String selectedSeatInfo = baseFunc.getTextOfElement(BOOKED_SEAT);
      return Integer.parseInt(StringUtils.getDigits(selectedSeatInfo));
     }
 

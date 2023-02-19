@@ -12,7 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import javax.swing.text.StyledEditorKit;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TestWithBook {
 
@@ -36,6 +38,10 @@ public class TestWithBook {
     private final By REVIEW_LIST = By.xpath(".//div[@data-hook = 'review']");
     private final By NEXT_PAGE_BTN = By.xpath(".//li[@class = 'a-last']/a");
 
+    private final By BOOK_LINK = By.xpath(".//a[@data-hook = 'product-link']");
+    private final By TEXT = By.xpath("//div[@class = \"a-expander-content a-expander-partial-collapse-content\"]");
+
+
     @BeforeEach
     public void openHomePage() {
         System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
@@ -48,7 +54,6 @@ public class TestWithBook {
 
     @Test
     public void selectionBook() {
-        //Test Data
         String navigationShopMenuItem = "Best Sellers";
         String bestSellersCategory = "Books";
 
@@ -110,6 +115,22 @@ public class TestWithBook {
             System.out.println(reviews.size());
         }
 
+        browser.findElement(BOOK_LINK).click();
+        String text = browser.findElement(TEXT).getText().replaceAll("[\\p{Punct}\r\n]", "");
+        String[] words = text.split(" ");
+        HashMap <String, Integer> map = new HashMap<>();
+        for (String word : words) {
+            if (map.containsKey(word)) {
+                map.put(word, map.get(word)+1);
+            } else {
+                map.put(word,1);
+            }
+        }
+        System.out.println(map.size());
+
+
+
+        /*
 //Sdelatj praviljnij podschet kommentariev!!
         while (browser.findElement(NEXT_PAGE_BTN).isEnabled()) {
             wait = new WebDriverWait(browser, Duration.ofSeconds(10));
@@ -119,20 +140,23 @@ public class TestWithBook {
             /*for (WebElement reviewNextPageId: reviewNextPage) {
                 System.out.println(reviewNextPageId.getAttribute("id"));
             }*/
+        /*
             Assertions.assertEquals(idFirstReview, nextPageIdFirstReview, "ID different!");
             /*if (idFirstReview.equals(nextPageIdFirstReview)) {
                 //wait = new WebDriverWait(browser, Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(idFirstReview)));
                 System.out.println("if " + reviews.size());
             } else {}*/
+        /*
             reviews.addAll(reviewNextPage);
             System.out.println("else " + reviews.size());
 
             browser.findElement(NEXT_PAGE_BTN).click();
         }
+        */
     }
-    @AfterEach
+   /* @AfterEach
     public void closeBrowser() {
         browser.close();
-    }
+    }*/
    }
