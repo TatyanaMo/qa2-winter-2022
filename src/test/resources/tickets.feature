@@ -12,8 +12,8 @@ Feature: Tickets reservation
       | seat        | 27         |
 
     And passenger info is:
-      | first_name | Barsjusha |
-      | last_name  | Kotovski  |
+      | first_name | random   |
+      | last_name  | Kotovski |
 
     And home page opened
 
@@ -23,7 +23,7 @@ Feature: Tickets reservation
     When we are filling in passenger registration form
     And requesting price
     Then passenger name and airports appears
-    And price is 500 EUR
+    And price is 1080 EUR
 
     When we are pressing Book button
     And selecting seat

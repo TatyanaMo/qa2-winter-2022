@@ -1,26 +1,30 @@
 package stepdefs;
 
-import io.cucumber.java.en.And;
+
+import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import model.Reservation;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import pageobject.BaseFunc;
 import pageobject.model.FlightInfo;
 import pageobject.model.Passenger;
 import pageobject.pages.*;
-
+import requesters.TicketsRequester;
+import java.util.List;
 import java.util.Map;
 
 public class TicketsStepDefs {
     private FlightInfo flightInfo; //null
     private HomePage homePage; // null
-    private PassengerInfoPage passengerInfoPage;
-    private FlightInfoPage flightInfoPage;
-    private SeatSelectionPage seatSelectionPage;
-    private RegistrationConfirmationPage registrationConfirmationPage;
+    private PassengerInfoPage passengerInfoPage; // null
+    private FlightInfoPage flightInfoPage; // null
+    private SeatSelectionPage seatSelectionPage; // null
+    private RegistrationConfirmationPage registrationConfirmationPage; // null
 
+    private List<Reservation> reservations;  //null
+    private Reservation reservationFromApi; // null
 
     private BaseFunc baseFunc = new BaseFunc();
 
@@ -61,18 +65,11 @@ public class TicketsStepDefs {
     @When("we are filling in passenger registration form")
     public void fill_in_passenger_registration_form() {
         passengerInfoPage.fillInPassengerInfo(flightInfo);
-        flightInfo.getPassenger().getFirstName();
-        flightInfo.getPassenger().getLastName();
-        flightInfo.getDiscount();
-        flightInfo.getAdultsCount();
-        flightInfo.getChildCount();
-        flightInfo.getBagsCount();
-        flightInfo.getFlightDate();
     }
-    @And("requesting price")
+    @When("requesting price")
     public void request_price() {
-        flightInfoPage = new FlightInfoPage(baseFunc);
         passengerInfoPage.getPrice();
+        flightInfoPage = new FlightInfoPage(baseFunc);
     }
 
     @Then("passenger name and airports appears")
@@ -81,19 +78,20 @@ public class TicketsStepDefs {
         Assertions.assertEquals(passengerInfoPage.getFromAirport(), flightInfoPage.getFromAirport2(), "Airports 'From' not equals!");
         Assertions.assertEquals(passengerInfoPage.getToAirport(), flightInfoPage.getToAirport2(), "Airports 'To' not equals!");
     }
-    @And("price is 500 EUR")
+    @Then("price is 1080 EUR")
     public void check_price () {
-        Assertions.assertEquals(flightInfoPage.getPrice(), 500, "Price not correct");
+        Assertions.assertEquals(flightInfoPage.getPrice(), String.valueOf(1080), "Price not correct");
     }
 
     @When("we are pressing Book button")
     public void confirm_booking() {
         flightInfoPage.book();
-    }
-    @And("selecting seat")
-    public void select_seat() {
         seatSelectionPage = new SeatSelectionPage(baseFunc);
+    }
+    @When("selecting seat")
+    public void select_seat() {
         seatSelectionPage.selectSeat(flightInfo.getSeatNr());
+        registrationConfirmationPage = new RegistrationConfirmationPage(baseFunc);
     }
 
     @Then("correct seat number appears")
@@ -103,7 +101,6 @@ public class TicketsStepDefs {
 
     @When("we are booking selected ticket")
     public void booking_tickets() {
-        registrationConfirmationPage = new RegistrationConfirmationPage(baseFunc);
         seatSelectionPage.book();
     }
 
@@ -112,4 +109,36 @@ public class TicketsStepDefs {
        Assertions.assertTrue(registrationConfirmationPage.isSuccessfulRegistrationTextAppears(),
                "Wrong text on registration confirmation page!" );
     }
+
+    @When("we are requesting reservations data")
+    public void request_reservations() throws JsonProcessingException {
+        TicketsRequester requester = new TicketsRequester();
+        reservations = requester.getReservations();
+    }
+
+    @Then("current reservation is in the list")
+    public void find_reservation(){
+        for (Reservation r : reservations) {
+            if (r.getName().equals(flightInfo.getPassenger().getFirstName())) {
+              reservationFromApi = r;
+              break;
+            }
+        }
+        Assertions.assertNotNull(reservationFromApi, "reservation not found!");
+    }
+
+    @Then("all reservation data is correct")
+    public void check_reservation_data() {
+        Assertions.assertEquals(flightInfo.getPassenger().getFirstName(), reservationFromApi.getName(), "Wrong name!");
+        Assertions.assertEquals(flightInfo.getPassenger().getLastName(), reservationFromApi.getSurname(), "Wrong surname!");
+        Assertions.assertEquals(flightInfo.getDeparture(), reservationFromApi.getDeparture(), "Wrong Fron airports!");
+        Assertions.assertEquals(flightInfo.getDestination(),reservationFromApi.getArrival(), "Wrong To airport!");
+        Assertions.assertEquals(flightInfo.getBagsCount(), reservationFromApi.getBagCount(), "Wrong bags!");
+        Assertions.assertEquals(flightInfo.getDiscount(),reservationFromApi.getDiscount(), "Wrong discount!");
+        Assertions.assertEquals(flightInfo.getChildCount(), reservationFromApi.getChildren(), "Wrong children!");
+        Assertions.assertEquals(flightInfo.getFlightDate().substring(0,2), reservationFromApi.getFlight(), "Wrong date!");
+        Assertions.assertEquals(flightInfo.getAdultsCount(), reservationFromApi.getAdults(),"Wrong adults!");
+        Assertions.assertEquals(flightInfo.getSeatNr(), reservationFromApi.getSeat(), "Wrong seat!");
+    }
+
 }

@@ -22,11 +22,12 @@ public class TicketsTestsOnPages {
 
     @Test
     public void successfulRegistrationTest () {
-        Passenger passenger = new Passenger("Kompot", "Tatjanovich");
-        int seatNr = RandomUtils.nextInt(1, 35);
+        Passenger passenger = new Passenger("Barsjusha", "Kotovski");
+        int seatNr = 27;
+        //int seatNr = RandomUtils.nextInt(1, 35);
 
-        FlightInfo flightInfo = new FlightInfo("RIX", "SVO", "ghgh12hd", 1,2,
-                4,"16-05-2018", seatNr);
+        FlightInfo flightInfo = new FlightInfo("RIX", "SVO", "fg123gg", 1,2,
+                4,"14-05-2018", seatNr);
         flightInfo.setPassenger(passenger);
 
         baseFunc.openUrl(URL);
