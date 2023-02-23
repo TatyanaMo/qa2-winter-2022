@@ -9,24 +9,24 @@ Feature: Weather forecast
       | longitude | -74.5 |
 
     And timezone information is:
-      | timezone | America/New_York |
-      | offset   | -18000           |
+      | timezone        | America/New_York |
+      | timezone_offset | -18000           |
 
     And current weather data is:
-      | time        | 1646318698 |
-      | sunrise     | 164630688  |
-      | sunset      | 1646347929 |
-      | temperature | 282.21     |
-      | feels_like  | 278.41     |
-      | pressure    | 1014       |
-      | humidity    | 65         |
-      | dew_point   | 275.99     |
-      | uvi         | 2.55       |
-      | clouds      | 40         |
-      | visibility  | 10000      |
-      | wind_speed  | 8.75       |
-      | wind_deg    | 360        |
-      | wind_gust   | 13.89      |
+      | dt         | 1646318698 |
+      | sunrise    | 1646306882 |
+      | sunset     | 1646347929 |
+      | temp       | 282.21     |
+      | feels_like | 278.41     |
+      | pressure   | 1014       |
+      | humidity   | 65         |
+      | dew_point  | 275.99     |
+      | uvi        | 2.55       |
+      | clouds     | 40         |
+      | visibility | 10000      |
+      | wind_speed | 8.75       |
+      | wind_deg   | 360        |
+      | wind_gust  | 13.89      |
 
     And weather information is:
       | id          | 802              |
@@ -35,23 +35,23 @@ Feature: Weather forecast
       | icon        | 03d              |
 
     And minutely weather data is:
-      | time          | 1646318700 |
+      | dt            | 1646318700 |
       | precipitation | 0          |
 
     And hourly weather data is:
-      | time        | 1646316000 |
-      | temperature | 281.94     |
-      | feels_like  | 278.49     |
-      | pressure    | 1014       |
-      | humidity    | 67         |
-      | dew_point   | 276.16     |
-      | uvi         | 1.49       |
-      | clouds      | 52         |
-      | visibility  | 10000      |
-      | wind_speed  | 7.16       |
-      | wind_deg    | 313        |
-      | wind_gust   | 10.7       |
-      | pop         | 0.03       |
+      | dt         | 1646316000 |
+      | temp       | 281.94     |
+      | feels_like | 278.49     |
+      | pressure   | 1014       |
+      | humidity   | 67         |
+      | dew_point  | 276.16     |
+      | uvi        | 1.49       |
+      | clouds     | 52         |
+      | visibility | 10000      |
+      | wind_speed | 7.16       |
+      | wind_deg   | 313        |
+      | wind_gust  | 10.7       |
+      | pop        | 0.03       |
 
     And hourly weather information is:
       | id          | 803           |
@@ -60,7 +60,7 @@ Feature: Weather forecast
       | icon        | 04d           |
 
     And daily weather data is:
-      | time       | 1646326800 |
+      | dt         | 1646326800 |
       | sunrise    | 1646306882 |
       | sunset     | 1646347929 |
       | moonrise   | 1646309880 |
@@ -98,7 +98,7 @@ Feature: Weather forecast
       | icon        | 10d        |
 
     And alert Nr. 1 received:
-      | sender      | NWS Philadelphia - Mount Holly (New Jersey, Delaware, Southeastern Pennsylvania)                                                                                                                                                                                                                                                                                                                                                                                                                        |
+      | sender_name | NWS Philadelphia - Mount Holly (New Jersey, Delaware, Southeastern Pennsylvania)                                                                                                                                                                                                                                                                                                                                                                                                                        |
       | event       | Small Craft Advisory                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
       | start       | 1646344800                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
       | end         | 1646380800                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |

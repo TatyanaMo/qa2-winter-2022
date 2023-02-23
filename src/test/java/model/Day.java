@@ -12,7 +12,7 @@ public class Day {
     public long moonset;
 
     @JsonProperty ("moon_phase")
-    private int moonPhase;
+    private double moonPhase;
 
     private Temp temp;
 
@@ -23,23 +23,23 @@ public class Day {
     private int humidity;
 
     @JsonProperty ("dew_point")
-    private int dewPoint;
+    private double dewPoint;
 
     @JsonProperty("wind_speed")
-    private int windSpeed;
+    private double windSpeed;
 
     @JsonProperty("wind_deg")
     private int windDeg;
 
     @JsonProperty("wind_gust")
-    private int windGust;
+    private double windGust;
 
     private List<Weather> weather;
 
     private int clouds;
-    private int pop;
-    private int rain;
-    private int uvi;
+    private double pop;
+    private double rain;
+    private double uvi;
 
     public long getDt() {
         return dt;
@@ -81,11 +81,11 @@ public class Day {
         this.moonset = moonset;
     }
 
-    public int getMoonPhase() {
+    public double getMoonPhase() {
         return moonPhase;
     }
 
-    public void setMoonPhase(int moonPhase) {
+    public void setMoonPhase(double moonPhase) {
         this.moonPhase = moonPhase;
     }
 
@@ -121,19 +121,19 @@ public class Day {
         this.humidity = humidity;
     }
 
-    public int getDewPoint() {
+    public double getDewPoint() {
         return dewPoint;
     }
 
-    public void setDewPoint(int dewPoint) {
+    public void setDewPoint(double dewPoint) {
         this.dewPoint = dewPoint;
     }
 
-    public int getWindSpeed() {
+    public double getWindSpeed() {
         return windSpeed;
     }
 
-    public void setWindSpeed(int windSpeed) {
+    public void setWindSpeed(double windSpeed) {
         this.windSpeed = windSpeed;
     }
 
@@ -145,11 +145,11 @@ public class Day {
         this.windDeg = windDeg;
     }
 
-    public int getWindGust() {
+    public double getWindGust() {
         return windGust;
     }
 
-    public void setWindGust(int windGust) {
+    public void setWindGust(double windGust) {
         this.windGust = windGust;
     }
 
@@ -169,27 +169,27 @@ public class Day {
         this.clouds = clouds;
     }
 
-    public int getPop() {
+    public double getPop() {
         return pop;
     }
 
-    public void setPop(int pop) {
+    public void setPop(double pop) {
         this.pop = pop;
     }
 
-    public int getRain() {
+    public double getRain() {
         return rain;
     }
 
-    public void setRain(int rain) {
+    public void setRain(double rain) {
         this.rain = rain;
     }
 
-    public int getUvi() {
+    public double getUvi() {
         return uvi;
     }
 
-    public void setUvi(int uvi) {
+    public void setUvi(double uvi) {
         this.uvi = uvi;
     }
 }

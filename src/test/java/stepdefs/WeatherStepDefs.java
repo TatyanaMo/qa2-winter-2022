@@ -39,31 +39,31 @@ public class WeatherStepDefs {
     @Then("timezone information is:")
     public void check_timezone(Map<String, String> params) {
         Assertions.assertEquals(params.get("timezone"), response.getTimezone(), "Wrong timezone!");
-        Assertions.assertEquals(params.get("timezone_offset"), response.getTimezoneOffset(), "Wrong timezone_offset!");
+        Assertions.assertEquals(params.get("timezone_offset"), String.valueOf(response.getTimezoneOffset()), "Wrong timezone_offset!");
     }
 
     @Then("current weather data is:")
     public void check_current_weather(Map<String, String> params) {
-        Assertions.assertEquals(params.get("dt"), response.getCurrent().getDt(), "Wrong dt!");
-        Assertions.assertEquals(params.get("sunrise"), response.getCurrent().getSunrise(), "Wrong sunrise!");
-        Assertions.assertEquals(params.get("sunset"), response.getCurrent().getSunset(), "Wrong sunset!");
-        Assertions.assertEquals(params.get("temp"), response.getCurrent().getTemp(), "Wrong temp!");
-        Assertions.assertEquals(params.get("feels_like"), response.getCurrent().getFeelsLike(), "Wrong feels_like!");
-        Assertions.assertEquals(params.get("pressure"), response.getCurrent().getPressure(), "Wrong pressure!");
-        Assertions.assertEquals(params.get("humidity"), response.getCurrent().getHumidity(), "Wrong humidity!");
-        Assertions.assertEquals(params.get("dew_point"), response.getCurrent().getDewPoint(), "Wrong dew_point!");
-        Assertions.assertEquals(params.get("uvi"), response.getCurrent().getUvi(), "Wrong uvi!");
-        Assertions.assertEquals(params.get("clouds"), response.getCurrent().getClouds(), "Wrong clouds!");
-        Assertions.assertEquals(params.get("visibility"), response.getCurrent().getVisibility(), "Wrong visibility!");
-        Assertions.assertEquals(params.get("wind_speed"), response.getCurrent().getWindSpeed(), "Wrong wind_speed!");
-        Assertions.assertEquals(params.get("wind_deg"), response.getCurrent().getWindDeg(), "Wrong wind_deg!");
-        Assertions.assertEquals(params.get("wind_gust"), response.getCurrent().getWindGust(), "Wrong wind_gust!");
-        Assertions.assertEquals(params.get("wind_gust"), response.getCurrent().getWindGust(), "Wrong wind_gust!");
+        Assertions.assertEquals(params.get("dt"), String.valueOf(response.getCurrent().getDt()), "Wrong dt!");
+        Assertions.assertEquals(params.get("sunrise"), String.valueOf(response.getCurrent().getSunrise()), "Wrong sunrise!");
+        Assertions.assertEquals(params.get("sunset"), String.valueOf(response.getCurrent().getSunset()), "Wrong sunset!");
+        Assertions.assertEquals(params.get("temp"), String.valueOf(response.getCurrent().getTemp()), "Wrong temp!");
+        Assertions.assertEquals(params.get("feels_like"), String.valueOf(response.getCurrent().getFeelsLike()), "Wrong feels_like!");
+        Assertions.assertEquals(params.get("pressure"), String.valueOf(response.getCurrent().getPressure()), "Wrong pressure!");
+        Assertions.assertEquals(params.get("humidity"),String.valueOf(response.getCurrent().getHumidity()), "Wrong humidity!");
+        Assertions.assertEquals(params.get("dew_point"), String.valueOf(response.getCurrent().getDewPoint()), "Wrong dew_point!");
+        Assertions.assertEquals(params.get("uvi"), String.valueOf(response.getCurrent().getUvi()), "Wrong uvi!");
+        Assertions.assertEquals(params.get("clouds"), String.valueOf(response.getCurrent().getClouds()), "Wrong clouds!");
+        Assertions.assertEquals(params.get("visibility"), String.valueOf(response.getCurrent().getVisibility()), "Wrong visibility!");
+        Assertions.assertEquals(params.get("wind_speed"), String.valueOf(response.getCurrent().getWindSpeed()), "Wrong wind_speed!");
+        Assertions.assertEquals(params.get("wind_deg"), String.valueOf(response.getCurrent().getWindDeg()), "Wrong wind_deg!");
+        Assertions.assertEquals(params.get("wind_gust"), String.valueOf(response.getCurrent().getWindGust()), "Wrong wind_gust!");
+
     }
 
     @Then("weather information is:")
     public void check_weather_information (Map<String, String> params) {
-        Assertions.assertEquals(params.get("id"), response.getCurrent().getWeather().get(0).getId(), "Wrong id!");
+        Assertions.assertEquals(params.get("id"), String.valueOf(response.getCurrent().getWeather().get(0).getId()), "Wrong id!");
         Assertions.assertEquals(params.get("main"), response.getCurrent().getWeather().get(1).getMain(), "Wrong main!");
         Assertions.assertEquals(params.get("description"), response.getCurrent().getWeather().get(2).getDescription(), "Wrong description!");
         Assertions.assertEquals(params.get("icon"), response.getCurrent().getWeather().get(3).getIcon(), "Wrong icon!");
@@ -77,25 +77,24 @@ public class WeatherStepDefs {
 
     @Then("hourly weather data is:")
     public void check_hourly_weather(Map<String, String> params) {
-        Assertions.assertEquals(params.get("dt"), response.getHours().get(0).getDt(), "Wrong dt!");
-        Assertions.assertEquals(params.get("temp"), response.getHours().get(1).getTemp(), "Wrong temp!");
-        Assertions.assertEquals(params.get("feels_like"), response.getHours().get(2).getFeelsLike(), "Wrong feels_like!");
-        Assertions.assertEquals(params.get("pressure"), response.getHours().get(3).getPressure(), "Wrong pressure!");
-        Assertions.assertEquals(params.get("humidity"), response.getHours().get(4).getHumidity(), "Wrong humidity!");
-        Assertions.assertEquals(params.get("dew_point"), response.getHours().get(5).getDewPoint(), "Wrong dew_point!");
-        Assertions.assertEquals(params.get("uvi"), response.getHours().get(6).getUvi(), "Wrong uvi!");
-        Assertions.assertEquals(params.get("clouds"), response.getHours().get(7).getClouds(), "Wrong clouds!");
-        Assertions.assertEquals(params.get("visibility"), response.getHours().get(8).getVisibility(), "Wrong visibility!");
-        Assertions.assertEquals(params.get("wind_speed"), response.getHours().get(9).getWindSpeed(), "Wrong wind_speed!");
-        Assertions.assertEquals(params.get("wind_deg"), response.getHours().get(10).getWindDeg(), "Wrong wind_deg!");
-        Assertions.assertEquals(params.get("wind_gust"), response.getHours().get(11).getWindGust(), "Wrong wind_gust!");
-        Assertions.assertEquals(params.get("pop"), response.getHours().get(13).getPop(), "Wrong pop!");
+        Assertions.assertEquals(params.get("dt"), Long.valueOf(response.getHours().get(0).getDt()), "Wrong dt!");
+        Assertions.assertEquals(params.get("temp"), Double.valueOf(response.getHours().get(1).getTemp()), "Wrong temp!");
+        Assertions.assertEquals(params.get("feels_like"), Double.valueOf(response.getHours().get(2).getFeelsLike()), "Wrong feels_like!");
+        Assertions.assertEquals(params.get("pressure"), Double.valueOf(response.getHours().get(3).getPressure()), "Wrong pressure!");
+        Assertions.assertEquals(params.get("humidity"), Integer.valueOf(response.getHours().get(4).getHumidity()), "Wrong humidity!");
+        Assertions.assertEquals(params.get("dew_point"), Double.valueOf(response.getHours().get(5).getDewPoint()), "Wrong dew_point!");
+        Assertions.assertEquals(params.get("uvi"), Double.valueOf(response.getHours().get(6).getUvi()), "Wrong uvi!");
+        Assertions.assertEquals(params.get("clouds"), Integer.valueOf(response.getHours().get(7).getClouds()), "Wrong clouds!");
+        Assertions.assertEquals(params.get("visibility"), Integer.valueOf(response.getHours().get(8).getVisibility()), "Wrong visibility!");
+        Assertions.assertEquals(params.get("wind_speed"), Double.valueOf(response.getHours().get(9).getWindSpeed()), "Wrong wind_speed!");
+        Assertions.assertEquals(params.get("wind_deg"), Integer.valueOf(response.getHours().get(10).getWindDeg()), "Wrong wind_deg!");
+        Assertions.assertEquals(params.get("wind_gust"), Double.valueOf(response.getHours().get(11).getWindGust()), "Wrong wind_gust!");
+        Assertions.assertEquals(params.get("pop"), Double.valueOf(response.getHours().get(13).getPop()), "Wrong pop!");
     }
 
     @Then("hourly weather information is:")
     public void check_hourly_weather_information(Map<String, String> params){
-        //kak sozdatj dlja spiska weather tut proverki ?
-        Assertions.assertEquals(params.get("id"), response.getHours().get(13).getWeather().get(0).getId(), "Wrong id!");
+        Assertions.assertEquals(params.get("id"), Integer.valueOf(response.getHours().get(13).getWeather().get(0).getId()), "Wrong id!");
         Assertions.assertEquals(params.get("main"), response.getHours().get(13).getWeather().get(1).getMain(), "Wrong main!");
         Assertions.assertEquals(params.get("description"), response.getHours().get(13).getWeather().get(2).getDescription(), "Wrong description!");
         Assertions.assertEquals(params.get("icon"), response.getHours().get(13).getWeather().get(3).getIcon(), "Wrong icon!");
@@ -103,22 +102,22 @@ public class WeatherStepDefs {
 
     @Then("daily weather data is:")
     public void check_daily_weather(Map<String, String> params) {
-        Assertions.assertEquals(params.get("dt"), response.getDays().get(0).getDt(), "Wrong dt!");
-        Assertions.assertEquals(params.get("sunrise"), response.getDays().get(1).getSunrise(), "Wrong sunrise!");
-        Assertions.assertEquals(params.get("sunset"), response.getDays().get(2).getSunset(), "Wrong sunset!");
-        Assertions.assertEquals(params.get("moonrise"), response.getDays().get(3).getMoonrise(), "Wrong moonrise!");
-        Assertions.assertEquals(params.get("moonset"), response.getDays().get(4).getMoonset(), "Wrong moonset!");
-        Assertions.assertEquals(params.get("moon_phase"), response.getDays().get(5).getMoonPhase(), "Wrong moon_phase!");
-        Assertions.assertEquals(params.get("pressure"), response.getDays().get(8).getPressure(), "Wrong pressure!");
-        Assertions.assertEquals(params.get("humidity"), response.getDays().get(9).getHumidity(), "Wrong humidity!");
-        Assertions.assertEquals(params.get("dew_point"), response.getDays().get(10).getDewPoint(), "Wrong dew_point!");
-        Assertions.assertEquals(params.get("wind_speed"), response.getDays().get(11).getWindSpeed(), "Wrong wind_speed!");
-        Assertions.assertEquals(params.get("wind_deg"), response.getDays().get(12).getWindDeg(), "Wrong wind_deg!");
-        Assertions.assertEquals(params.get("wind_gust"), response.getDays().get(13).getWindGust(), "Wrong wind_gust!");
-        Assertions.assertEquals(params.get("clouds"), response.getDays().get(15).getClouds(), "Wrong clouds!");
-        Assertions.assertEquals(params.get("pop"), response.getDays().get(16).getPop(), "Wrong pop!");
-        Assertions.assertEquals(params.get("rain"), response.getDays().get(17).getRain(), "Wrong rain!");
-        Assertions.assertEquals(params.get("uvi"), response.getDays().get(18).getUvi(), "Wrong uvi!");
+        Assertions.assertEquals(params.get("dt"), Long.valueOf(response.getDays().get(0).getDt()), "Wrong dt!");
+        Assertions.assertEquals(params.get("sunrise"), Long.valueOf(response.getDays().get(1).getSunrise()), "Wrong sunrise!");
+        Assertions.assertEquals(params.get("sunset"), Long.valueOf(response.getDays().get(2).getSunset()), "Wrong sunset!");
+        Assertions.assertEquals(params.get("moonrise"), Long.valueOf(response.getDays().get(3).getMoonrise()), "Wrong moonrise!");
+        Assertions.assertEquals(params.get("moonset"), Long.valueOf(response.getDays().get(4).getMoonset()), "Wrong moonset!");
+        Assertions.assertEquals(params.get("moon_phase"), Double.valueOf(response.getDays().get(5).getMoonPhase()), "Wrong moon_phase!");
+        Assertions.assertEquals(params.get("pressure"), Integer.valueOf(response.getDays().get(8).getPressure()), "Wrong pressure!");
+        Assertions.assertEquals(params.get("humidity"), Integer.valueOf(response.getDays().get(9).getHumidity()), "Wrong humidity!");
+        Assertions.assertEquals(params.get("dew_point"), Double.valueOf(response.getDays().get(10).getDewPoint()), "Wrong dew_point!");
+        Assertions.assertEquals(params.get("wind_speed"), Double.valueOf(response.getDays().get(11).getWindSpeed()), "Wrong wind_speed!");
+        Assertions.assertEquals(params.get("wind_deg"), Integer.valueOf(response.getDays().get(12).getWindDeg()), "Wrong wind_deg!");
+        Assertions.assertEquals(params.get("wind_gust"), Double.valueOf(response.getDays().get(13).getWindGust()), "Wrong wind_gust!");
+        Assertions.assertEquals(params.get("clouds"), Integer.valueOf(response.getDays().get(15).getClouds()), "Wrong clouds!");
+        Assertions.assertEquals(params.get("pop"), Double.valueOf(response.getDays().get(16).getPop()), "Wrong pop!");
+        Assertions.assertEquals(params.get("rain"), Double.valueOf(response.getDays().get(17).getRain()), "Wrong rain!");
+        Assertions.assertEquals(params.get("uvi"), Double.valueOf(response.getDays().get(18).getUvi()), "Wrong uvi!");
     }
 
     @Then ("temperature is:")
@@ -141,7 +140,7 @@ public class WeatherStepDefs {
 
     @Then("daily weather information is:")
     public void check_daily_weather_information(Map<String, String> params) {
-        Assertions.assertEquals(params.get("id"), response.getDays().get(14).getWeather().get(0).getId(), "Wrong id!");
+        Assertions.assertEquals(params.get("id"), Integer.valueOf(response.getDays().get(14).getWeather().get(0).getId()), "Wrong id!");
         Assertions.assertEquals(params.get("main"), response.getDays().get(14).getWeather().get(1).getMain(), "Wrong main!");
         Assertions.assertEquals(params.get("description"), response.getDays().get(14).getWeather().get(2).getDescription(), "Wrong description!");
         Assertions.assertEquals(params.get("icon"), response.getDays().get(14).getWeather().get(3).getIcon(), "Wrong icon!");
@@ -151,8 +150,8 @@ public class WeatherStepDefs {
     public void check_alert(int index, Map<String, String> params) {
         Assertions.assertEquals(params.get("sender_name"), response.getAlerts().get(0).getSenderName(), "Wrong sender_name!");
         Assertions.assertEquals(params.get("event"), response.getAlerts().get(1).getEvent(), "Wrong event!");
-        Assertions.assertEquals(params.get("start"), response.getAlerts().get(2).getStart(), "Wrong start!");
-        Assertions.assertEquals(params.get("end"), response.getAlerts().get(3).getEnd(), "Wrong end!");
+        Assertions.assertEquals(params.get("start"), Long.valueOf(response.getAlerts().get(2).getStart()), "Wrong start!");
+        Assertions.assertEquals(params.get("end"), Long.valueOf(response.getAlerts().get(3).getEnd()), "Wrong end!");
         Assertions.assertEquals(params.get("description"), response.getAlerts().get(4).getDescription(), "Wrong description!");
         Assertions.assertEquals(params.get("description"), response.getAlerts().get(4).getDescription(), "Wrong description!");
     }

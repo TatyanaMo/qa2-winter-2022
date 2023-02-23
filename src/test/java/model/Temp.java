@@ -1,58 +1,58 @@
 package model;
 
 public class Temp {
-    private int day;
-    private int min;
-    private int max;
-    private int night;
-    private int eve;
-    private int morn;
+    private double day;
+    private double min;
+    private double max;
+    private double night;
+    private double eve;
+    private double morn;
 
-    public int getDay() {
+    public double getDay() {
         return day;
     }
 
-    public void setDay(int day) {
+    public void setDay(double day) {
         this.day = day;
     }
 
-    public int getMin() {
+    public double getMin() {
         return min;
     }
 
-    public void setMin(int min) {
+    public void setMin(double min) {
         this.min = min;
     }
 
-    public int getMax() {
+    public double getMax() {
         return max;
     }
 
-    public void setMax(int max) {
+    public void setMax(double max) {
         this.max = max;
     }
 
-    public int getNight() {
+    public double getNight() {
         return night;
     }
 
-    public void setNight(int night) {
+    public void setNight(double night) {
         this.night = night;
     }
 
-    public int getEve() {
+    public double getEve() {
         return eve;
     }
 
-    public void setEve(int eve) {
+    public void setEve(double eve) {
         this.eve = eve;
     }
 
-    public int getMorn() {
+    public double getMorn() {
         return morn;
     }
 
-    public void setMorn(int morn) {
+    public void setMorn(double morn) {
         this.morn = morn;
     }
 }

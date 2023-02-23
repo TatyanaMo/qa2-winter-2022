@@ -8,31 +8,31 @@ public class Current {
     private long dt;
     private long sunrise;
     private long sunset;
-    private int temp;
+    private double temp;
 
     @JsonProperty("feels_like")
-    private int feelsLike;
+    private double feelsLike;
 
     private int pressure;
     private int humidity;
 
     @JsonProperty("dew_point")
-    private int dewPoint;
+    private double dewPoint;
 
-    private int uvi;
+    private double uvi;
     private int clouds;
     private int visibility;
 
     @JsonProperty("wind_speed")
-    private int windSpeed;
+    private double windSpeed;
 
     @JsonProperty("wind_deg")
     private int windDeg;
 
     @JsonProperty("wind_gust")
-    private int windGust;
+    private double windGust;
 
-    private List<Weather> weather;
+    private List<Weather> weathers;
 
 
     public long getDt() {
@@ -59,19 +59,19 @@ public class Current {
         this.sunset = sunset;
     }
 
-    public int getTemp() {
+    public double getTemp() {
         return temp;
     }
 
-    public void setTemp(int temp) {
+    public void setTemp(double temp) {
         this.temp = temp;
     }
 
-    public int getFeelsLike() {
+    public double getFeelsLike() {
         return feelsLike;
     }
 
-    public void setFeelsLike(int feelsLike) {
+    public void setFeelsLike(double feelsLike) {
         this.feelsLike = feelsLike;
     }
 
@@ -91,19 +91,19 @@ public class Current {
         this.humidity = humidity;
     }
 
-    public int getDewPoint() {
+    public double getDewPoint() {
         return dewPoint;
     }
 
-    public void setDewPoint(int dewPoint) {
+    public void setDewPoint(double dewPoint) {
         this.dewPoint = dewPoint;
     }
 
-    public int getUvi() {
+    public double getUvi() {
         return uvi;
     }
 
-    public void setUvi(int uvi) {
+    public void setUvi(double uvi) {
         this.uvi = uvi;
     }
 
@@ -123,11 +123,11 @@ public class Current {
         this.visibility = visibility;
     }
 
-    public int getWindSpeed() {
+    public double getWindSpeed() {
         return windSpeed;
     }
 
-    public void setWindSpeed(int windSpeed) {
+    public void setWindSpeed(double windSpeed) {
         this.windSpeed = windSpeed;
     }
 
@@ -139,19 +139,19 @@ public class Current {
         this.windDeg = windDeg;
     }
 
-    public int getWindGust() {
+    public double getWindGust() {
         return windGust;
     }
 
-    public void setWindGust(int windGust) {
+    public void setWindGust(double windGust) {
         this.windGust = windGust;
     }
 
     public List<Weather> getWeather() {
-        return weather;
+        return weathers;
     }
 
     public void setWeather(List<Weather> weather) {
-        this.weather = weather;
+        this.weathers = weather;
     }
 }
