@@ -56,8 +56,7 @@ public class AmazonTests {
         BooksAmazonPage booksAmazonPage = new BooksAmazonPage(baseFunc);
         booksAmazonPage.openBook1();
 
-        BookForHashMapAmazon bookForHashMapAmazon = new BookForHashMapAmazon(baseFunc);
-        bookForHashMapAmazon.getWordsOfText().size();
-        System.out.println(bookForHashMapAmazon.getWordsOfText().size());
+        BookInfoAmazon bookInfoAmazon = new BookInfoAmazon(baseFunc);
+        System.out.println(bookInfoAmazon.getWordsOfText().size());
     }
 }

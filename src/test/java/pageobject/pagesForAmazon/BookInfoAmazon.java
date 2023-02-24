@@ -1,17 +1,16 @@
 package pageobject.pagesForAmazon;
 
-import io.cucumber.java.it.Ma;
 import org.openqa.selenium.By;
 import pageobject.BaseFunc;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class BookForHashMapAmazon {
+public class BookInfoAmazon {
     private final By TEXT = By.xpath("//div[@class=\"a-expander-content a-expander-partial-collapse-content\"]");
 
     private BaseFunc baseFunc;
-    public BookForHashMapAmazon(BaseFunc baseFunc) {
+    public BookInfoAmazon(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
     }
 
