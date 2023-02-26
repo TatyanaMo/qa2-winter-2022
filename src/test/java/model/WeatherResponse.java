@@ -1,11 +1,8 @@
 package model;
 
-import io.cucumber.core.internal.com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.cucumber.core.internal.com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
-
-@JsonIgnoreProperties(ignoreUnknown = true)  // esli net kakih-to peremennih to test ne budet padatj
 
 public class WeatherResponse {
     private double lat;
@@ -15,14 +12,20 @@ public class WeatherResponse {
     @JsonProperty("timezone_offset")
     private int timezoneOffset;
 
-    private Current current;    // eto vlozhennij celij object
+    private Current current;
 
-    private List<Minute> minutely;  // eto vlozhennij celij spisok
+
+    private List<Minute> minutely;
+
+    @JsonProperty("hourly")
     private List<Hour> hours;
+
+    @JsonProperty("daily")
     private List<Day> days;
+
     private List<Alert> alerts;
 
-//Getters/Setters
+
     public double getLat() {
         return lat;
     }

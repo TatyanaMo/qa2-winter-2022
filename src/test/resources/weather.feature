@@ -29,10 +29,10 @@ Feature: Weather forecast
       | wind_gust  | 13.89      |
 
     And weather information is:
-      | id          | 802              |
-      | main        | clouds           |
-      | description | scattered clouds |
-      | icon        | 03d              |
+      | id          | 802             |
+      | main        | Clouds          |
+      | description | scatteredclouds |
+      | icon        | 03d             |
 
     And minutely weather data is:
       | dt            | 1646318700 |
@@ -50,14 +50,14 @@ Feature: Weather forecast
       | visibility | 10000      |
       | wind_speed | 7.16       |
       | wind_deg   | 313        |
-      | wind_gust  | 10.7       |
+      | wind_gust  | 10.71      |
       | pop        | 0.03       |
 
     And hourly weather information is:
-      | id          | 803           |
-      | main        | clouds        |
-      | description | broken clouds |
-      | icon        | 04d           |
+      | id          | 803          |
+      | main        | Clouds       |
+      | description | brokenclouds |
+      | icon        | 04d          |
 
     And daily weather data is:
       | dt         | 1646326800 |
@@ -92,22 +92,17 @@ Feature: Weather forecast
       | morn  | 277.66 |
 
     And daily weather information is:
-      | id          | 500        |
-      | main        | Rai        |
-      | description | light rain |
-      | icon        | 10d        |
+      | id          | 500       |
+      | main        | Rain      |
+      | description | lightrain |
+      | icon        | 10d       |
 
-    And alert Nr. 1 received:
-      | sender_name | NWS Philadelphia - Mount Holly (New Jersey, Delaware, Southeastern Pennsylvania)                                                                                                                                                                                                                                                                                                                                                                                                                        |
-      | event       | Small Craft Advisory                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-      | start       | 1646344800                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-      | end         | 1646380800                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-      | description | ...SMALL CRAFT ADVISORY REMAINS IN EFFECT FROM 5 PM THIS AFTERNOON TO 3 AM EST FRIDAY...WHAT...North winds 15 to 20 kt with gusts up to 25 kt and seas 3 to 5 ft expected.WHERE...Coastal waters from Little Egg Inlet to Great Egg Inlet NJ out 20 nm, Coastal waters from Great Egg Inlet to Cape May NJ out 20 nm and Coastal waters from Manasquan Inlet to Little Egg Inlet NJ out 20 nm.WHEN...From 5 PM this afternoon to 3 AM EST Friday.IMPACTS...Conditions will be hazardous to small craft. |
-
-    And tags for an alert Nr. 1 are:
-      | Sunny  |
-      | Clouds |
-
+    And alert received:
+      | sender_name | NWSPhiladelphia-MountHolly(NewJersey,Delaware,SoutheasternPennsylvania)                                                                                                                                                                                                                                                                                                                                                               |
+      | event       | SmallCraftAdvisory                                                                                                                                                                                                                                                                                                                                                                                                                    |
+      | start       | 1646344800                                                                                                                                                                                                                                                                                                                                                                                                                            |
+      | end         | 1646380800                                                                                                                                                                                                                                                                                                                                                                                                                            |
+      | description | ...SMALLCRAFTADVISORYREMAINSINEFFECTFROM5PMTHIS\nAFTERNOONTO3AMESTFRIDAY...\n*WHAT...Northwinds15to20ktwithgustsupto25ktandseas\n3to5ftexpected.\n*WHERE...CoastalwatersfromLittleEggInlettoGreatEgg\nInletNJout20nm,CoastalwatersfromGreatEggInletto\nCapeMayNJout20nmandCoastalwatersfromManasquanInlet\ntoLittleEggInletNJout20nm.\n*WHEN...From5PMthisafternoonto3AMESTFriday.\n*IMPACTS...Conditionswillbehazardoustosmallcraft. |
 
 #     Sunny i Clouds - eto naprimer Tags esli bi bili - tak kak eto prosto spisok znachenij, bez kljuchej, to s Boljshoj bukvi
 #    Then latitude is 39.31
