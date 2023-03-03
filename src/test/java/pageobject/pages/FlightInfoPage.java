@@ -2,10 +2,8 @@ package pageobject.pages;
 
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import pageobject.BaseFunc;
 
-import java.util.List;
 
 public class FlightInfoPage {
 

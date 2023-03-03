@@ -1,19 +1,10 @@
 package pageobject;
 
-import dev.failsafe.internal.util.Assert;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.RandomUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebElement;
 import pageobject.model.FlightInfo;
 import pageobject.model.Passenger;
 import pageobject.pages.*;
-
-import javax.print.attribute.standard.MediaSize;
-import java.util.List;
 
 public class TicketsTestsOnPages {
     private final String URL = "http://www.qaguru.lv:8089/tickets/";
@@ -24,7 +15,6 @@ public class TicketsTestsOnPages {
     public void successfulRegistrationTest () {
         Passenger passenger = new Passenger("Barsjusha", "Kotovski");
         int seatNr = 27;
-        //int seatNr = RandomUtils.nextInt(1, 35);
 
         FlightInfo flightInfo = new FlightInfo("RIX", "SVO", "fg123gg", 1,2,
                 4,"14-05-2018", seatNr);
@@ -55,6 +45,5 @@ public class TicketsTestsOnPages {
 
         RegistrationConfirmationPage registrationConfirmationPage = new RegistrationConfirmationPage(baseFunc);
         Assertions.assertTrue(registrationConfirmationPage.isSuccessfulRegistrationTextAppears(), "Wrong text on registration confirmation page!");
-
     }
 }

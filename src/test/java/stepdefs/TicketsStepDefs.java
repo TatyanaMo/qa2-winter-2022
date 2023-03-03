@@ -16,15 +16,15 @@ import java.util.List;
 import java.util.Map;
 
 public class TicketsStepDefs {
-    private FlightInfo flightInfo; //null
-    private HomePage homePage; // null
-    private PassengerInfoPage passengerInfoPage; // null
-    private FlightInfoPage flightInfoPage; // null
-    private SeatSelectionPage seatSelectionPage; // null
-    private RegistrationConfirmationPage registrationConfirmationPage; // null
+    private FlightInfo flightInfo;
+    private HomePage homePage;
+    private PassengerInfoPage passengerInfoPage;
+    private FlightInfoPage flightInfoPage;
+    private SeatSelectionPage seatSelectionPage;
+    private RegistrationConfirmationPage registrationConfirmationPage;
 
-    private List<Reservation> reservations;  //null
-    private Reservation reservationFromApi; // null
+    private List<Reservation> reservations;
+    private Reservation reservationFromApi;
 
     private BaseFunc baseFunc = new BaseFunc();
 
@@ -80,7 +80,7 @@ public class TicketsStepDefs {
     }
     @Then("price is 1080 EUR")
     public void check_price () {
-        Assertions.assertEquals(flightInfoPage.getPrice(), String.valueOf(1080), "Price not correct");
+        Assertions.assertEquals(flightInfoPage.getPrice(), String.valueOf(1080), "Price different!");
     }
 
     @When("we are pressing Book button")

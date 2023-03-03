@@ -14,6 +14,7 @@ public class FirstSeleniumTest {
     private final By ACCEPT_COOKIES_BTN = By.id("onetrust-accept-btn-handler");
     private final By TOP_LOCATION_LINK = By.xpath(".//div[@class = 'tl-box']/a");
 
+    //private final By FILTER_OPTION = By.xpath(".//label[contains(@class, 'my-checkbox-label default filtering-event')]");
 
     private WebDriver browser;
     private WebDriverWait wait;
@@ -33,6 +34,7 @@ public class FirstSeleniumTest {
         browser.findElement(ACCEPT_COOKIES_BTN).click();
 
         clickOnCountry(country);
+
     }
 
     private void clickOnCountry(String country) {
