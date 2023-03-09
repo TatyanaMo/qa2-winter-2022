@@ -43,7 +43,7 @@ public class HomePageCars {
     }
 
     public void getLocation (String locationToOpen) {
-        for (WebElement locationName : baseFunc.list(TOP_LOCATIONS)){
+        for (WebElement locationName : baseFunc.list(TOP_LOCATIONS)) {
             if (locationName.getText().equals(locationToOpen));
             locationName.click();
             break;

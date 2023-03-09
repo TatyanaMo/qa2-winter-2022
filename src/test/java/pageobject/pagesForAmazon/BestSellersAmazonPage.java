@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pageobject.BaseFunc;
 
-import java.util.List;
 
 public class BestSellersAmazonPage {
 

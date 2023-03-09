@@ -9,7 +9,6 @@ public class Cat {
     private double weight;
     private boolean catIsFat;
 
-
     //--------------GETTERS/SETTERS----------------
 
     public String getName() {

@@ -71,6 +71,10 @@ public class BaseFunc {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
+    public String getTextOfElement (By locator) {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator)).getText();
+    }
+
     public void waitForElementsCountToBe(By locator, int count) {
         wait.until(ExpectedConditions.numberOfElementsToBe(locator, count));
     }

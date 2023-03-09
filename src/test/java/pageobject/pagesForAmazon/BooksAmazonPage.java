@@ -35,7 +35,6 @@ public class BooksAmazonPage {
         getBook(bookNr).findElement(BOOK_TO_OPEN_COMMENT_LINK).click();
     }
 
-    //esli nado otkritj knigu dlja hashmapa
     public void openBook1 () {
         baseFunc.findElement(BOOK).click();
     }
