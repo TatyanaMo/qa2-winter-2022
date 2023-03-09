@@ -1,20 +1,16 @@
 public class Student {
-    //----------ATTRIBUTES-----------
+
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
 
-
-    //----------CONSTRUCTORS--------
-
-//Eto pustoj konstruktor (esli sozdaem potom studentov s pomowju setterov)
     public Student() {
 
     }
-// eto konstruktor, cherez kotorij uzhe nozhno sozdavatj novih studentov, bez setterov
+
     public Student(String firstName, String lastName, String email, String phone) {
-        this.firstName = firstName;  //cherez this. ukazivaem chto znachenie iz metoda prisvaevaetjsa znacheniju classa
+        this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;

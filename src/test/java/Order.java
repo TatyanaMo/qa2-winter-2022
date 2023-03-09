@@ -10,7 +10,7 @@ public class Order {
     private String address;
     private boolean deliveryRequested;
 
-    //--------------GETTERS/SETTERS----------------
+
     public double getTotalPrice() {
         return totalPrice;
     }

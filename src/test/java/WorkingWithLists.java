@@ -17,23 +17,22 @@ public class WorkingWithLists {
         Student artis = new Student("Artis", "Greatest", null, "112");
 
         List<Student> students = new ArrayList<>();
-        students.add(valera);  //0 index
-        students.add(liga);    //1
-        students.add(dimko);   //2
-        students.add(artis);   //3
+        students.add(valera);
+        students.add(liga);
+        students.add(dimko);
+        students.add(artis);
 
-        //-----------FOR (cikl)----------
+
         for (int i = 0; i < students.size(); i++) {    // i = i + 1 --> i++
             System.out.println(students.get(i).getFirstName());
         }
 
-        //--------FOREACH (cikl)----------
+
         for (Student s : students) {
-//          System.out.println(s.getFirstName() + " " + s.getLastName());  ili tak ili cherez custom methods(nizhe)
             System.out.println(s.getFullName());
         }
 
-        //------FOREACH with IF-------
+
         System.out.println("printing students with phone number starting with +371");
         for (Student s: students) {
             if (s.getPhone().startsWith("+371")) {
