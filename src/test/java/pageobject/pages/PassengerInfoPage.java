@@ -40,7 +40,6 @@ public class PassengerInfoPage {
         baseFunc.type(BAG, flightInfo.getBagsCount());
         baseFunc.selectByText(FLIGHT, flightInfo.getFlightDate());
 
-        //baseFunc.click(GET_PRICE_BTN);
     }
     public void getPrice(){
         baseFunc.click(GET_PRICE_BTN);
