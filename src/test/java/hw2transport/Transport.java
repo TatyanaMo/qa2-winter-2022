@@ -5,7 +5,6 @@ public class Transport {
     private double fuelConsumption;
     private double tankVolume;
 
-//----------------CONSTRUCTORS-------------------
     public Transport() {
 
     }
@@ -16,7 +15,6 @@ public class Transport {
         this.tankVolume = tankVolume;
     }
 
-//----------------GETTERS/SETTERS----------------
     public String getVehicleType() {
         return vehicleType;
     }

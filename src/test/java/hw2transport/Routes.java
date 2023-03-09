@@ -6,7 +6,7 @@ public class Routes {
     private String endPoint;
     private double distance;
 
-//----------------CONSTRUCTORS-------------------
+
     public Routes() {
 
     }
@@ -16,7 +16,7 @@ public class Routes {
         this.endPoint = endPoint;
         this.distance = distance;
     }
-//----------------GETTERS/SETTERS----------------
+
     public String getRouteName() {
         return routeName;
     }
