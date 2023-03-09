@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class FindLocationTest {
-//vinesla testovie dannie (peremennie) na urovenj classa, za ramki testa)
+
     private final String HOME_PAGE_URL = "http://www.discovercars.com/";
     private final String LOCATION_TO_OPEN = "Latvia";
 
@@ -59,7 +59,7 @@ public class FindLocationTest {
 
 
     private WebDriver browser;
-    //WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(10));
+
 
     @BeforeEach
     public void openHomePageCheck () {
