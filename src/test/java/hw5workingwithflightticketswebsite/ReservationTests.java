@@ -143,9 +143,8 @@ public class ReservationTests {
         inputField.clear();
         inputField.sendKeys(text);
     }
-
-        /*@AfterEach
+    @AfterEach
     public void closeBrowser() {
         browser.close();
-    }*/
+    }
 }
