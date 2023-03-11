@@ -55,7 +55,6 @@ public class ReservationTests {
         String firstName = "Barsjusha";
         String airportFrom = "MEL";
         String airportTo = "CPT";
-        //Integer seatNr = 6;
 
         System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
         browser = new ChromeDriver();
@@ -90,7 +89,6 @@ public class ReservationTests {
         String from2 = flightInfo.get(1).getText();
         String to2 = flightInfo.get(2).getText();
 
-        //proverki:
         Assertions.assertEquals(name1,firstName, "Name not equal!" );
         Assertions.assertEquals(from2, from, "Airports FROM not equal!" );
         Assertions.assertEquals(to2, to, "Airports TO not equal!");
@@ -107,7 +105,7 @@ public class ReservationTests {
         browser.findElement(BOOK_BTN).click();
 
         wait.until(ExpectedConditions.presenceOfElementLocated(SEATS));
-        List<WebElement> bookSeats = browser.findElements(SEATS);   //kak vinesti v otdeljnij metod vibor mesta? ( za predeli testa)
+        List<WebElement> bookSeats = browser.findElements(SEATS);
         bookSeats.get(6);
         String seat = bookSeats.get(6).getText();
         bookSeats.get(6).click();
