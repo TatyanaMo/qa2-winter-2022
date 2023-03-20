@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -45,7 +46,10 @@ public class TestWithBook {
     @BeforeEach
     public void openHomePage() {
         System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
-        browser = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        browser = new ChromeDriver(options);
+        //browser = new ChromeDriver();
         browser.manage().window().maximize();
         browser.get(HOME_PAGE_URL);
         browser.findElement(ACCEPT_COOKIES_BTN).click();

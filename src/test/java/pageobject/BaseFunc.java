@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,10 +16,11 @@ public class BaseFunc {
     private WebDriver browser;
     private WebDriverWait wait;
 
-    // dalee sozdaem konstruktor, kotorij vipolnjaetsja prinuditeljno pri sozdanii kopii nashego objekta basefunc
     public BaseFunc() {
         System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
-        browser = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        browser = new ChromeDriver(options);
         browser.manage().window().maximize();
 
         wait = new WebDriverWait(browser, Duration.ofSeconds(5));
@@ -58,12 +60,13 @@ public class BaseFunc {
         input.sendKeys(text);
     }
 
-    //etot metod pozvolitj int peredelatj v string i zaispoljzovatj osnovnoj metod
+    //etot metod pozvolit int peredelatj v string i zaispoljzovatj osnovnoj metod
     public void type (By locator, int text) {
         type(locator, String.valueOf(text));
     }
 
     public List<WebElement> list(By locator) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         return browser.findElements(locator);
     }
 
