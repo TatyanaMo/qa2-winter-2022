@@ -6,7 +6,6 @@ import org.apache.commons.lang3.RandomUtils;
 public class User {
     private long id;
     private String firstName;
-    //private String firstName = RandomStringUtils.randomAlphabetic(10);
     private String lastName;
     private String email;
 
