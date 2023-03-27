@@ -1,5 +1,8 @@
 package pageobject.model;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
+
 public class FlightInfo {
     private String departure;
     private String destination;
@@ -10,6 +13,22 @@ public class FlightInfo {
     private String flightDate;
     private int seatNr;
     private Passenger passenger;
+
+    public FlightInfo(boolean isDefault) {
+        if (isDefault) {
+            this.departure = "SFO";
+            this.destination = "RIX";
+            this.discount = "fg123gg";
+            this.adultsCount = 1;
+            this.childCount = 2;
+            this.bagsCount = 4;
+            this.flightDate = "14-05-2018";
+            this.seatNr = RandomUtils.nextInt(1,35);
+            this.passenger = new Passenger("Barsjusha", "Kotovski");
+
+        }
+    }
+
 
     public FlightInfo(String departure, String destination, String discount, int adultsCount, int childCount, int bagsCount, String flightDate, int seatNr) {
         this.departure = departure;

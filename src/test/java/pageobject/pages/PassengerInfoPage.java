@@ -1,5 +1,6 @@
 package pageobject.pages;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import pageobject.BaseFunc;
 import pageobject.model.FlightInfo;
