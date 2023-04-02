@@ -87,7 +87,6 @@ public class TestWithBook {
 
         String bookStars = browser.findElement(STARS).getText();
 
-        //proverka zvezd
         boolean isBookStarsAreEqual = false;
         for (WebElement book : books) {
             if (stars.contains(bookStars)) {
@@ -98,7 +97,6 @@ public class TestWithBook {
         Assertions.assertTrue(isBookStarsAreEqual, "Book stars not equal!");
 
         String bookRating = browser.findElement(RATING_TWO).getText();
-        //proverka ratinga
         boolean isBookRatingisEqual = false;
         for (WebElement book : books) {
             if (bookRating.contains(rating)) {
@@ -132,35 +130,9 @@ public class TestWithBook {
         }
         System.out.println(map.size());
 
-
-
-        /*
-//Sdelatj praviljnij podschet kommentariev!!
-        while (browser.findElement(NEXT_PAGE_BTN).isEnabled()) {
-            wait = new WebDriverWait(browser, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(idFirstReview)));
-            List<WebElement> reviewNextPage = new ArrayList<>(browser.findElements(REVIEW_LIST));
-            String nextPageIdFirstReview = reviewNextPage.get(0).getAttribute("id");
-            /*for (WebElement reviewNextPageId: reviewNextPage) {
-                System.out.println(reviewNextPageId.getAttribute("id"));
-            }*/
-        /*
-            Assertions.assertEquals(idFirstReview, nextPageIdFirstReview, "ID different!");
-            /*if (idFirstReview.equals(nextPageIdFirstReview)) {
-                //wait = new WebDriverWait(browser, Duration.ofSeconds(10));
-                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(idFirstReview)));
-                System.out.println("if " + reviews.size());
-            } else {}*/
-        /*
-            reviews.addAll(reviewNextPage);
-            System.out.println("else " + reviews.size());
-
-            browser.findElement(NEXT_PAGE_BTN).click();
-        }
-        */
     }
-   /* @AfterEach
+   @AfterEach
     public void closeBrowser() {
         browser.close();
-    }*/
+    }
    }
